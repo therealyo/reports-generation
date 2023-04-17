@@ -1,0 +1,37 @@
+{
+  "name": "report-generation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/index.ts --platform=node --target=node18.4 --format=cjs --bundle --minify --main-fields=main --outfile=build/index.cjs  --external:pg-native",
+    "start": "npm run build && node build/index.cjs",
+    "sst:dev": "sst dev",
+    "sst:build": "sst build",
+    "sst:deploy": "sst deploy",
+    "sst:remove": "sst remove",
+    "sst:console": "sst console",
+    "typecheck": "tsc --noEmit",
+    "migration": "npx drizzle-kit generate:pg"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.23.13",
+    "esbuild": "^0.17.17",
+    "fast-xml-parser": "^4.2.0",
+    "pg": "^8.10.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/node": "^18.15.11",
+    "@types/pg": "^8.6.6",
+    "aws-cdk-lib": "2.72.1",
+    "constructs": "10.1.156",
+    "drizzle-kit": "^0.17.4",
+    "sst": "^2.5.2",
+    "typescript": "^5.0.4"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

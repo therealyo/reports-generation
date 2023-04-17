@@ -1,0 +1,16 @@
+# dependencies
+node_modules
+
+# sst
+.sst
+.build
+stacks
+packages
+sst.config.ts
+# misc
+.DS_Store
+
+# local env files
+.env*.local
+
+build

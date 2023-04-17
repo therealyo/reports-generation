@@ -1,0 +1,1 @@
+ALTER TABLE "aroflo_data" ADD COLUMN "task_id" varchar;
