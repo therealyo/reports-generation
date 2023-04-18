@@ -36,26 +36,26 @@ import XLSX from "xlsx";
 //   console.log(worksheet);
 // });
 
-const getUserId = async () => {
+const getUserId = async (userName: string) => {
   // implement here
-  return "Peter";
+  return "JSc6UyZRTEwgCg==";
 };
 
-function ExcelDateToJSDate(serial: number) {
-  var utc_days = Math.floor(serial - 25569);
-  var utc_value = utc_days * 86400;
-  var date_info = new Date(utc_value * 1000);
+function excelDateToJSDate(serial: number) {
+  const utc_days = Math.floor(serial - 25569);
+  const utc_value = utc_days * 86400;
+  const date_info = new Date(utc_value * 1000);
 
-  var fractional_day = serial - Math.floor(serial) + 0.0000001;
+  const fractional_day = serial - Math.floor(serial) + 0.0000001;
 
-  var total_seconds = Math.floor(86400 * fractional_day);
+  let total_seconds = Math.floor(86400 * fractional_day);
 
-  var seconds = total_seconds % 60;
+  const seconds = total_seconds % 60;
 
   total_seconds -= seconds;
 
-  var hours = Math.floor(total_seconds / (60 * 60));
-  var minutes = Math.floor(total_seconds / 60) % 60;
+  const hours = Math.floor(total_seconds / (60 * 60));
+  const minutes = Math.floor(total_seconds / 60) % 60;
 
   return new Date(
     date_info.getFullYear(),
@@ -67,33 +67,55 @@ function ExcelDateToJSDate(serial: number) {
   ).valueOf();
 }
 
+interface ParsedXLSX {
+  startDate: string;
+  endDate: string;
+  user: string;
+  records: NewEmailDataModel[];
+}
+
 export const parseXLSX = async () => {
+  const parsed = {} as ParsedXLSX;
   const workbook = XLSX.readFile("ReportInbound.xlsx");
   const sheetNameList = workbook.SheetNames;
   const sheet = workbook.Sheets[sheetNameList[0]];
   const rows: any = XLSX.utils.sheet_to_json(sheet);
 
-  const userId: string = await getUserId();
+  // const userId: string = await getUserId();
+  // get date and userId from excel report
+  await Promise.all(
+    rows.map(async (row: any) => {
+      if (row.Report === "Object:")
+        parsed.user = await getUserId(row["__EMPTY"]);
+      if (row.Report === "Period:") {
+        parsed.startDate = row["__EMPTY"].split(" ")[0].replace(/-/g, "/");
+        parsed.endDate = row["__EMPTY"].split(" ")[3].replace(/-/g, "/");
+      }
+    })
+  );
 
-  const records: NewEmailDataModel[] = rows
+  parsed.records = rows
     .map((row: any) => {
-      // if (row.Report === "Object:") user = row["__EMPTY"];
+      // if (row.Report === "Object:")
+      // parsed.user = await getUserId(row["__EMPTY"]);
+      // if (row.Report === "Period:")
+      //   parsed.date = row["__EMPTY"].split(" ")[0].replace(/-/g, "/");
       if (Object.keys(row).length > 2 && row.Report !== "Status") {
         if (row.Report === Status.STOPPED) {
           return {
-            startDate: ExcelDateToJSDate(row["__EMPTY"]),
-            endDate: ExcelDateToJSDate(row["__EMPTY_1"]),
+            startDate: excelDateToJSDate(row["__EMPTY"]),
+            endDate: excelDateToJSDate(row["__EMPTY_1"]),
             timeSpent: row["__EMPTY_2"],
             location: row["__EMPTY_3"],
-            userId: userId,
+            userId: parsed.user,
             status: Status.STOPPED,
           };
         } else if (row.Report === Status.MOVING) {
           return {
-            startDate: ExcelDateToJSDate(row["__EMPTY"]),
-            endDate: ExcelDateToJSDate(row["__EMPTY_1"]),
+            startDate: excelDateToJSDate(row["__EMPTY"]),
+            endDate: excelDateToJSDate(row["__EMPTY_1"]),
             timeSpent: row["__EMPTY_2"],
-            userId: userId,
+            userId: parsed.user,
             location: null,
             status: Status.MOVING,
           };
@@ -102,5 +124,6 @@ export const parseXLSX = async () => {
     })
     .filter((record: NewEmailDataModel) => record);
 
-  return records;
+  // parsed.records = records
+  return parsed;
 };

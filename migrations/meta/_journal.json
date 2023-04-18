@@ -29,6 +29,13 @@
       "when": 1681741449792,
       "tag": "0003_sparkling_loa",
       "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1681820745705,
+      "tag": "0004_slim_stone_men",
+      "breakpoints": false
     }
   ]
 }

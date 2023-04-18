@@ -14,7 +14,7 @@ export type ArofloModel = InferModel<typeof arofloTable, "select">;
 export type NewArofloModel = InferModel<typeof arofloTable, "insert">;
 
 export const arofloTable = pgTable("aroflo_data", {
-  id: serial("id").primaryKey(),
+  id: varchar("id").primaryKey(),
   startDate: bigint("start_date", { mode: "number" }),
   endDate: bigint("end_date", { mode: "number" }),
   location: varchar("location"),

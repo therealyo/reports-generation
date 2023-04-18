@@ -1,0 +1,614 @@
+[
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "20 Good St, A Place QLD 4660, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "1:54 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "6:19 am"
+    },
+    "time": "4 h 24 min 27 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "6:19 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "6:50 am"
+    },
+    "time": "31 min 4 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "82 Bad Rd, Bad QLD 4660, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "6:50 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:15 am"
+    },
+    "time": "25 min 0 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "7:15 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:16 am"
+    },
+    "time": "1 min 22 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "7:16 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:20 am"
+    },
+    "time": "3 min 31 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "7:20 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:22 am"
+    },
+    "time": "2 min 20 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "7:22 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:42 am"
+    },
+    "time": "20 min 22 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "7:42 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "7:44 am"
+    },
+    "time": "1 min 42 s",
+    "description": ""
+  },
+  {
+    "activity": "job",
+    "address": {
+      "aroflo": "Unit 269 Number 176 Torrens Road 'Living Gems Sout",
+      "actual": "Unit 269 Number 176 Torrens Road 'Living Gems Sout"
+    },
+    "arrived": {
+      "aroflo": "2:30 pm",
+      "actual": "7:44 am"
+    },
+    "departed": {
+      "aroflo": "2:45 pm",
+      "actual": "8:15 am"
+    },
+    "time": "31 min 12 s",
+    "description": "CONFIRMED 13/4 2:30pm SITE MEASURE"
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "8:15 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "8:57 am"
+    },
+    "time": "41 min 23 s",
+    "description": ""
+  },
+  {
+    "activity": "job",
+    "address": {
+      "aroflo": "2 Olympic Court Upper Caboolture",
+      "actual": "2 Olympic Court Upper Caboolture"
+    },
+    "arrived": {
+      "aroflo": "2:00 pm",
+      "actual": "8:57 am"
+    },
+    "departed": {
+      "aroflo": "2:15 pm",
+      "actual": "9:04 am"
+    },
+    "time": "7 min 27 s",
+    "description": "CONFIRMED 13/4 2pm URGENT SITE MEASURE"
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "9:04 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "9:16 am"
+    },
+    "time": "11 min 41 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "9:16 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "9:42 am"
+    },
+    "time": "26 min 12 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "9:42 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "10:01 am"
+    },
+    "time": "19 min 20 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "10:01 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "10:36 am"
+    },
+    "time": "35 min 3 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "10:36 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "10:44 am"
+    },
+    "time": "7 min 21 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "10:44 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "11:06 am"
+    },
+    "time": "22 min 17 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "11:06 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "11:25 am"
+    },
+    "time": "19 min 20 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "11:25 am"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "12:24 pm"
+    },
+    "time": "58 min 24 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "12:24 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "12:47 pm"
+    },
+    "time": "23 min 31 s",
+    "description": ""
+  },
+  {
+    "activity": "job",
+    "address": {
+      "aroflo": "13 Kappella Street Kippa-Ring",
+      "actual": "13 Kappella Street Kippa-Ring"
+    },
+    "arrived": {
+      "aroflo": "12:30 pm",
+      "actual": "12:47 pm"
+    },
+    "departed": {
+      "aroflo": "1:15 pm",
+      "actual": "12:49 pm"
+    },
+    "time": "2 min 6 s",
+    "description": "CONFIRMED 12:30pm 13/4  INSTALL"
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "12:49 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "12:50 pm"
+    },
+    "time": "30 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "12:50 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "1:19 pm"
+    },
+    "time": "28 min 51 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "1:19 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "1:26 pm"
+    },
+    "time": "7 min 35 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "1:26 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "1:38 pm"
+    },
+    "time": "11 min 18 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "1:38 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "2:14 pm"
+    },
+    "time": "36 min 48 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "2:14 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "2:30 pm"
+    },
+    "time": "15 min 56 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "2:30 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "3:02 pm"
+    },
+    "time": "31 min 49 s",
+    "description": ""
+  },
+  {
+    "activity": "job",
+    "address": {
+      "aroflo": "14 Crestridge Crescent Morayfield",
+      "actual": "14 Crestridge Crescent Morayfield"
+    },
+    "arrived": {
+      "aroflo": "9:00 am",
+      "actual": "3:02 pm"
+    },
+    "departed": {
+      "aroflo": "12:00 pm",
+      "actual": "3:09 pm"
+    },
+    "time": "7 min 10 s",
+    "description": "CONFIRMED 13/4 9am finish painting - send Scott W"
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "3:09 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "3:40 pm"
+    },
+    "time": "30 min 44 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "3:40 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "4:14 pm"
+    },
+    "time": "33 min 56 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "4:14 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "4:24 pm"
+    },
+    "time": "10 min 30 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "4:24 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "6:34 pm"
+    },
+    "time": "2 h 9 min 40 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "6:34 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "6:47 pm"
+    },
+    "time": "13 min 9 s",
+    "description": ""
+  },
+  {
+    "activity": "other",
+    "address": {
+      "aroflo": null,
+      "actual": "Somewhere, Someplace QLD 4677, Australia"
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "6:47 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "9:35 pm"
+    },
+    "time": "2 h 48 min 10 s",
+    "description": ""
+  },
+  {
+    "activity": "travel",
+    "address": {
+      "aroflo": null,
+      "actual": null
+    },
+    "arrived": {
+      "aroflo": null,
+      "actual": "9:35 pm"
+    },
+    "departed": {
+      "aroflo": null,
+      "actual": "9:47 pm"
+    },
+    "time": "12 min 3 s",
+    "description": ""
+  }
+]

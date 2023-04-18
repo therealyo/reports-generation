@@ -2,7 +2,7 @@
   "name": "report-generation",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "esbuild src/index.ts --platform=node --target=node18.4 --format=cjs --bundle --minify --main-fields=main --outfile=build/index.cjs  --external:pg-native",
     "start": "npm run build && node build/index.cjs",

@@ -1,0 +1,2147 @@
+{
+    "imsapi": {
+        "status": 0,
+        "statusmessage": "Login OK",
+        "zoneresponse": {
+            "maxpageresults": 500,
+            "pagenumber": 1,
+            "generatedisplayresponsetime": 42,
+            "queryresponsetimes": {
+                "schedules": 12
+            },
+            "currentpageresults": 56,
+            "schedules": {
+                "schedule": [
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 269 Number 176 Torrens Road 'Living Gems Sout",
+                            "typeid": "JiZKUyFRPF8mCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSTFsnV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/05 23:21:10",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 2:30pm SITE MEASURE",
+                        "enddatetime": "2023/03/02 14:45:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6UyZRTEwgCg==",
+                            "scheduledtoname": "Andrew Werner",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 14:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "9-11 Jamor Court Elimbah",
+                            "typeid": "JiZKUyNRXDcmCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRRLFctVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/03 03:49:02",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 2:15pm SITE MEASURE",
+                        "enddatetime": "2023/03/02 14:30:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 14:15:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "2 Olympic Court Upper Caboolture",
+                            "typeid": "JiZKUydSXF8lCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RXFssVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/22 01:08:03",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 2pm URGENT SITE MEASURE",
+                        "enddatetime": "2023/03/02 14:15:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6UyZRTEwgCg==",
+                            "scheduledtoname": "Andrew Werner",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 14:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "69 Withington Street East Brisbane",
+                            "typeid": "JiZKVy1RXFMjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQPEMsVyAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/30 21:36:21",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 2pm 11/4 UREGNT SITE MEASURE",
+                        "enddatetime": "2023/03/02 14:15:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyBQPDckCg==",
+                            "scheduledtoname": "Scott Wilson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 14:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "3 Honeysuckle Street Caboolture",
+                            "typeid": "JiZKUy1QXDclCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSXE8lV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Snowdon",
+                            "givennames": "Tarlia",
+                            "userid": "JSQqTyRQPFAgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/04/12 03:01:40",
+                        "hours": 0.75,
+                        "note": "CONFIRMED 13/4 2PM UREGNT INSTALL",
+                        "enddatetime": "2023/03/02 14:45:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 14:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "unit 34 number, 8 Pepper Road Everton Hills",
+                            "typeid": "JiZKUydSXEcsCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RXFsjVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/03/22 00:38:08",
+                        "hours": 0.75,
+                        "note": "CONFIRMED 13/4 1:30PM INSTALL",
+                        "enddatetime": "2023/03/02 14:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKLy1RPDQgCg==",
+                            "scheduledtoname": "Rhys Horgan",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 13:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "33 Homestead Road Morayfield",
+                            "typeid": "JiZKVy1RTE8kCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRRPFcnV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/04 05:42:58",
+                        "hours": 0.25,
+                        "note": "CONFIMRED 13/4 1:30pm SITE MEASURE",
+                        "enddatetime": "2023/03/02 13:45:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 13:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 2111 Number 398 Cavendish Road Coorparoo",
+                            "typeid": "JiZKVyFRLDMgCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RTEMiVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/21 04:59:14",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 1:15pm  SITE MEASURE",
+                        "enddatetime": "2023/03/02 13:30:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyBQPDckCg==",
+                            "scheduledtoname": "Scott Wilson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 13:15:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "16 Daniel Court Scarborough",
+                            "typeid": "JiZKVyFQTFctCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QPFslVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/19 22:34:01",
+                        "hours": 1,
+                        "note": "FAB",
+                        "enddatetime": "2023/03/02 14:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFAgCg==",
+                            "scheduledtoname": "Terry Fletcher",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 13:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "9 Brigalow Court Morayfield",
+                            "typeid": "JiZKVyJQXEMjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSXEsmVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Snowdon",
+                            "givennames": "Tarlia",
+                            "userid": "JSQqTyRQPFAgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/04/12 01:42:44",
+                        "hours": 0.75,
+                        "note": "CONFIRMED 13/4 1PM INSTALL",
+                        "enddatetime": "2023/03/02 13:45:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 13:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "IL Unit 28 Number 42 Ridley Road Bridgeman Downs",
+                            "typeid": "JiZKUyJSXFMtCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRRPEchViAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/05 01:19:59",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 12:45pm SITE MEASURE",
+                        "enddatetime": "2023/03/02 13:00:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 12:45:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "13 Kappella Street Kippa-Ring",
+                            "typeid": "JiZKVyxRPFcnCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QTFclVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/14 04:23:10",
+                        "hours": 0.75,
+                        "note": "CONFIRMED 12:30pm 13/4  INSTALL",
+                        "enddatetime": "2023/03/02 13:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6UyZRTEwgCg==",
+                            "scheduledtoname": "Andrew Werner",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 12:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "20 Kline Place McDowall",
+                            "typeid": "JiZKUydRLEsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QLEsnVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/03/17 05:54:46",
+                        "hours": 0.75,
+                        "note": "CONFIRMED 13/4 12:30PM URGENT INSTALL",
+                        "enddatetime": "2023/03/02 13:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKLy1RPDQgCg==",
+                            "scheduledtoname": "Rhys Horgan",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 12:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "37 Richmond Court Munruben",
+                            "typeid": "JiZKTyRQPF8jCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QPEstVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/20 05:50:55",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 12:30pm SITE MEASURE",
+                        "enddatetime": "2023/03/02 12:45:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyBQPDckCg==",
+                            "scheduledtoname": "Scott Wilson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 12:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "2 Midler Place McDowall",
+                            "typeid": "JiZKXyBRPF8nCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RLEckVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/23 05:56:56",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 12:15pm URGENT SITE MEASURE",
+                        "enddatetime": "2023/03/02 12:30:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 12:15:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 121 Number 131 Quinlan Street Bracken Ridge",
+                            "typeid": "JiZKQyBQTDclCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSXFcsV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Warren",
+                            "givennames": "Erin",
+                            "userid": "JiYqRyNSXEMsCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/11 03:21:41",
+                        "hours": 0.25,
+                        "note": "CONFIRMED 13/4 11:30AM SITE MEASURE",
+                        "enddatetime": "2023/03/02 11:45:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 11:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 32 Number 60 Endeavour Boulevard North Lakes",
+                            "typeid": "JiZKUyNQPDMhCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRRXEsmVVAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/02 23:43:43",
+                        "hours": 1,
+                        "note": "CONFIRMED 13/4 CALL BACK - do with other job",
+                        "enddatetime": "2023/03/02 12:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 11:15:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "490 Zillmere Road Zillmere",
+                            "typeid": "JiZKUydQTEMiCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QXFckVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/15 05:44:02",
+                        "hours": 2,
+                        "note": "FAB",
+                        "enddatetime": "2023/03/02 13:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFAgCg==",
+                            "scheduledtoname": "Terry Fletcher",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 11:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Taylor Lee",
+                            "typeid": "JSdaQyRQTEQgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6RyRSTE8sV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Quade",
+                            "givennames": "Alana",
+                            "userid": "JSZaWyJQLFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/10 21:32:43",
+                        "hours": 0.75,
+                        "note": "",
+                        "enddatetime": "2023/03/02 11:45:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFggCg==",
+                            "scheduledtoname": "Ryan Quade",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 11:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 32 Number 60 Endeavour Boulevard North Lakes",
+                            "typeid": "JiZKUydQXEMgCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1QPEsmVVAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/20 04:31:47",
+                        "hours": 0.5,
+                        "note": "CONFIRMED 13/4 10:45am INSTALL - do with call back",
+                        "enddatetime": "2023/03/02 11:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 10:45:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "48 Denning Road Bracken Ridge",
+                            "typeid": "JiZKUyBSTFMsCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RPE8lVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/03/26 22:41:40",
+                        "hours": 0.5,
+                        "note": "CONFIRMED 13/4 10:45am  URGENT INSTALL",
+                        "enddatetime": "2023/03/02 11:15:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 10:45:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "41 Brookvale Drive Underwood",
+                            "typeid": "JiZKTy1RPFMlCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFskV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/03/29 01:55:43",
+                        "hours": 2,
+                        "note": "CONFIRMED 13/4 10am INSTALL 2 man scott W",
+                        "enddatetime": "2023/03/02 12:00:00",
+                        "grouping": {
+                            "groupid": "IScgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKLy1RPDQgCg==",
+                            "scheduledtoname": "Rhys Horgan",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 10:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "41 Brookvale Drive Underwood",
+                            "typeid": "JiZKTy1RPFMlCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSTFMmVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/04/05 22:21:02",
+                        "hours": 2,
+                        "note": "CONFIRMED 13/4 10am INSTALL 2 man scott W",
+                        "enddatetime": "2023/03/02 12:00:00",
+                        "grouping": {
+                            "groupid": "IScgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyBQPDckCg==",
+                            "scheduledtoname": "Scott Wilson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 10:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Unit 5 Number 19 Kate Street Woody Point",
+                            "typeid": "JiZKVydRXEMjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyJRLDcnVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/02/14 01:25:25",
+                        "hours": 0.5,
+                        "note": "CONFIRMED 13/4 9:45am INSTALL",
+                        "enddatetime": "2023/03/02 10:15:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:45:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "339 Oxley Avenue Margate",
+                            "typeid": "JiZKWyFSTEMsCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyNRXFMiV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/02/23 21:17:48",
+                        "hours": 0.5,
+                        "note": "CONFIRMED 13/4 10:15am INSTALL checker plate ramp",
+                        "enddatetime": "2023/03/02 10:15:00",
+                        "grouping": {
+                            "groupid": "IScwICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:45:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "15 Springside Close Bracken Ridge",
+                            "typeid": "JiZKVydRTFsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyJSTE8kVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/02/15 22:52:36",
+                        "hours": 2,
+                        "note": "URGENT FAB",
+                        "enddatetime": "2023/03/02 11:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFAgCg==",
+                            "scheduledtoname": "Terry Fletcher",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZKXyxQXEsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxQTEMmVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/02 00:17:44",
+                        "hours": 6,
+                        "note": "CONFIRMED MID MOD",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSZKWyNSXFwgCg==",
+                            "scheduledtoname": "Archie Ortiz-Horton",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZKXyxQXEsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxQTEMhVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/02 00:17:44",
+                        "hours": 6,
+                        "note": "CONFIRMED MID MOD",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqRyZQLEMsCg==",
+                            "scheduledtoname": "Kalan  Griffiths",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZKXyxQXEsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxQTEMhVjAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/02 00:17:44",
+                        "hours": 6,
+                        "note": "CONFIRMED MID MOD",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFwgCg==",
+                            "scheduledtoname": "Dan Schwenn",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZaWyNQLF8lCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxSTFcmV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/10 03:07:45",
+                        "hours": 6,
+                        "note": "CONFIRM help",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "IScwICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSZKWyNSXFwgCg==",
+                            "scheduledtoname": "Archie Ortiz-Horton",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZaWyNQLF8lCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxSTFcmVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/10 03:07:45",
+                        "hours": 6,
+                        "note": "CONFIRM CONCRETE",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqRyZQLEMsCg==",
+                            "scheduledtoname": "Kalan  Griffiths",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZaWyNQLF8lCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxSTFcmViAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/10 03:07:45",
+                        "hours": 6,
+                        "note": "CONFIRM MID MOD",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFwgCg==",
+                            "scheduledtoname": "Dan Schwenn",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "14 Crestridge Crescent Morayfield",
+                            "typeid": "JiZKXy1QXDMnCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFslVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": true,
+                        "enddate": "2023/03/02",
+                        "islocked": true,
+                        "inserteddatetimeutc": "2023/03/29 01:46:47",
+                        "hours": 3,
+                        "note": "CONFIRMED 13/4 9am finish painting - send Scott W",
+                        "enddatetime": "2023/03/02 12:00:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6UyZRTEwgCg==",
+                            "scheduledtoname": "Andrew Werner",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "85 Henderson Road Burpengary",
+                            "typeid": "JiZKTyVRPE8gCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQLFchVyAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/30 00:58:19",
+                        "hours": 6,
+                        "note": "CONFIRMED 12/4 - 13/4 9am INSTALL",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFQgCg==",
+                            "scheduledtoname": "Duncan Holman",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "CANCELLED Frederick White",
+                            "typeid": "JSdaQyRSTDAgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6RyRSXDMsVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/12 22:01:27",
+                        "hours": 0.5,
+                        "note": "",
+                        "enddatetime": "2023/03/02 09:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "CANCELLED Frederick White",
+                            "typeid": "JSdaQyRSTDQgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6RyRSXDclV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/12 22:02:14",
+                        "hours": 0.5,
+                        "note": "",
+                        "enddatetime": "2023/03/02 09:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKWyRRPDQgCg==",
+                            "scheduledtoname": "Nick Thompson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 09:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "92 Brighton Road Sandgate",
+                            "typeid": "JiZKVyxSXFsnCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRRXDcnVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/03 01:53:30",
+                        "hours": 6.5,
+                        "note": "CONFIRMED MID MOD",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqSyFSXEchCg==",
+                            "scheduledtoname": "Josh  Moore",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 08:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "92 Brighton Road Sandgate",
+                            "typeid": "JiZKVyxSXFsjCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSXDchV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Warren",
+                            "givennames": "Erin",
+                            "userid": "JiYqRyNSXEMsCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/12 22:13:27",
+                        "hours": 6.5,
+                        "note": "INSTALL",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqSyFSXEchCg==",
+                            "scheduledtoname": "Josh  Moore",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 08:30:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "16 Daniel Court Scarborough",
+                            "typeid": "JiZKVyFQTFctCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRSXEchVVAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/12 00:55:10",
+                        "hours": 1,
+                        "note": "FAB Raiser",
+                        "enddatetime": "2023/03/02 09:00:00",
+                        "grouping": {
+                            "groupid": "IScwICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKUyFRPEggCg==",
+                            "scheduledtoname": "Angelo Rossi",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 08:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Charmaine Annual Leave 11 - 14th April",
+                            "typeid": "JSdaTydQPEwgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyBQXE8tVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/01/13 01:00:16",
+                        "hours": 1,
+                        "note": "Charmaine A/L",
+                        "enddatetime": "2023/03/02 08:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JScqRyJRLEAgCg==",
+                            "scheduledtoname": "Office Staff",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Bryce Annual Leave 11-14th April",
+                            "typeid": "JSdaTydQPDAgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyBQXE8sVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/01/13 01:00:41",
+                        "hours": 8.5,
+                        "note": "Bryce Annual Leave",
+                        "enddatetime": "2023/03/02 15:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSQ6QyVSTEwgCg==",
+                            "scheduledtoname": "Bryce  Caves",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Steve Annual Leave 28/3 - 29/4",
+                            "typeid": "JSdaTyBRTFggCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyBQPEMtViAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Villani",
+                            "givennames": "Ann",
+                            "userid": "JSZaWyJQXDQgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/01/16 22:47:52",
+                        "hours": 8.5,
+                        "note": "Annual Leave",
+                        "enddatetime": "2023/03/02 15:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqRyNSTEsnCg==",
+                            "scheduledtoname": "Steve Beardsworth",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Office Days",
+                            "typeid": "JSdaTyBRPFwgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyBRTFMnV1AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Villani",
+                            "givennames": "Ann",
+                            "userid": "JSZaWyJQXDQgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/01/17 05:01:34",
+                        "hours": 8.5,
+                        "note": "Office Days",
+                        "enddatetime": "2023/03/02 15:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6Ry1SXFAgCg==",
+                            "scheduledtoname": "Rick Woollett",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Ted Office Day",
+                            "typeid": "JSdaTyBRPEAgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyBRTFcnVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Villani",
+                            "givennames": "Ann",
+                            "userid": "JSZaWyJQXDQgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/01/17 05:07:23",
+                        "hours": 8.5,
+                        "note": "Ted Office Day",
+                        "enddatetime": "2023/03/02 15:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JScqXy1QXEAgCg==",
+                            "scheduledtoname": "Ted  Bosveld",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Ben Annual Leave 11/4 - 14/4",
+                            "typeid": "JSdaSydRXDAgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyJRLEslVyAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Villani",
+                            "givennames": "Ann",
+                            "userid": "JSZaWyJQXDQgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/02/13 21:45:38",
+                        "hours": 9,
+                        "note": "11/4 - 14/4 Annual Leave",
+                        "enddatetime": "2023/03/02 16:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6VyBRPDAgCg==",
+                            "scheduledtoname": "Ben McIntosh",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Annual Leave 11/4 - 14/4",
+                            "typeid": "JSdaSyJRPFwgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6SyNRTF8iVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Villani",
+                            "givennames": "Ann",
+                            "userid": "JSZaWyJQXDQgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/02/23 01:50:52",
+                        "hours": 8.5,
+                        "note": "Confirmed Annual leave 11/4-14/4",
+                        "enddatetime": "2023/03/02 15:30:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSQ6SyFQPDQgCg==",
+                            "scheduledtoname": "Dan Linklater",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "311 Highlands Road Eudlo",
+                            "typeid": "JiZaUyNRLFsmCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6SyxRPDMsVyAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "McIntosh",
+                            "givennames": "Ben",
+                            "userid": "JSQqRyxQTEggCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/09 21:53:46",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISdAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JScqKyZRLEQgCg==",
+                            "scheduledtoname": "Tim Whelan",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZaWyNQLFsgCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1RLFcmVyAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "McIntosh",
+                            "givennames": "Ben",
+                            "userid": "JSQqRyxQTEggCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/23 00:56:42",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZAICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdaRyFQXDQgCg==",
+                            "scheduledtoname": "Dave Elliott",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "127a Dixon Road Buderim",
+                            "typeid": "JiZKWyxQXFsiCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6Sy1SXEcgVUAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Bazzica",
+                            "givennames": "Georgina",
+                            "userid": "JiYqQyBRXF8nCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/28 03:53:19",
+                        "hours": 2,
+                        "note": "URGENT FAB",
+                        "enddatetime": "2023/03/02 09:00:00",
+                        "grouping": {
+                            "groupid": "IScwICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSYqKyVRLFAgCg==",
+                            "scheduledtoname": "Terry Fletcher",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "23 Silkwood Drive Noosaville",
+                            "typeid": "JiZKUyJQPE8kCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFMiV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Warren",
+                            "givennames": "Erin",
+                            "userid": "JiYqRyNSXEMsCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/29 00:03:57",
+                        "hours": 1,
+                        "note": "URGENT FAB",
+                        "enddatetime": "2023/03/02 08:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdKUyFRPEggCg==",
+                            "scheduledtoname": "Angelo Rossi",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "106 Cambridge Crescent Fitzgibbon",
+                            "typeid": "JiZaLyVRTEskCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFshVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "McIntosh",
+                            "givennames": "Ben",
+                            "userid": "JSQqRyxQTEggCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/29 02:09:48",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSdaRyFQXDQgCg==",
+                            "scheduledtoname": "Dave Elliott",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "124 Lindeman Road Beerwah",
+                            "typeid": "JiZaWyNQLFsgCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFsiV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "McIntosh",
+                            "givennames": "Ben",
+                            "userid": "JSQqRyxQTEggCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/29 02:11:44",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "IScgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JScqRyJRLFggCg==",
+                            "scheduledtoname": "Matt (Tiler) Owens",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "8 Maryann Street Golden Beach",
+                            "typeid": "JiZKRyBSXEsmCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyRQXFsiViAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "McIntosh",
+                            "givennames": "Ben",
+                            "userid": "JSQqRyxQTEggCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/29 02:13:06",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqSyNSXEcsCg==",
+                            "scheduledtoname": "Scott Macknamara",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Bryces Van",
+                            "typeid": "JSdaRy1RTDQgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6RyRRPEsgVkAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/05 03:52:49",
+                        "hours": 1,
+                        "note": "Bryces Van",
+                        "enddatetime": "2023/03/02 08:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JSc6RyVRLEQgCg==",
+                            "scheduledtoname": "Matt Hetherington",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "Josh C Van service - Toyota drop off AM",
+                            "typeid": "JSdaRy1RLFwgCg==",
+                            "type": "ad-hoc event"
+                        },
+                        "scheduleid": "Jyc6RyRSTFMnV0AgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Caves",
+                            "givennames": "Charmaine",
+                            "userid": "JSQqTyRQPFwgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/04/05 20:56:12",
+                        "hours": 2,
+                        "note": "",
+                        "enddatetime": "2023/03/02 09:00:00",
+                        "grouping": {
+                            "groupid": "ISYgICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyVRPFsmCg==",
+                            "scheduledtoname": "Josh Coon",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    },
+                    {
+                        "scheduletype": {
+                            "typename": "17 Mark Street Morayfield",
+                            "typeid": "JiZKQydQPE8nCg==",
+                            "type": "task"
+                        },
+                        "scheduleid": "Jyc6RyVQTFsjVlAgIAo=",
+                        "startdate": "2023/03/02",
+                        "org": {
+                            "orgid": "JSYqVyVSXFggCg==",
+                            "orgname": "Qspec Pty Ltd"
+                        },
+                        "insertedby": {
+                            "surname": "Sawatzki",
+                            "givennames": "Elise",
+                            "userid": "JSQqTyRRXFAgCg=="
+                        },
+                        "ishidden": false,
+                        "enddate": "2023/03/02",
+                        "islocked": false,
+                        "inserteddatetimeutc": "2023/03/02 04:25:26",
+                        "hours": 8,
+                        "note": "Major Mod",
+                        "enddatetime": "2023/03/02 15:00:00",
+                        "grouping": {
+                            "groupid": "ISZQICAK"
+                        },
+                        "scheduledto": {
+                            "scheduledtoid": "JiYqXyBSTDMkCg==",
+                            "scheduledtoname": "Todd  Wilkinson",
+                            "scheduledtotype": "user",
+                            "crew": {
+                                "crewid": "",
+                                "crewname": ""
+                            }
+                        },
+                        "startdatetime": "2023/03/02 07:00:00"
+                    }
+                ]
+            }
+        }
+    }
+}
