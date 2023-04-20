@@ -1,27 +1,27 @@
-const checkIfAllValuesAreNull = (obj) => {
+const checkIfAllValuesAreNull = (obj: any) => {
   for (let key in obj) {
-      if (obj.hasOwnProperty(key) && obj[key] !== null) {
-          return false;
-      }
+    if (obj.hasOwnProperty(key) && obj[key] !== null) {
+      return false;
+    }
   }
   return true;
-}
+};
 
-const hasNotNullValues = (obj) => {
+const hasNotNullValues = (obj: any) => {
   for (let key in obj) {
-      if (obj.hasOwnProperty(key) && obj[key] !== null) {
-          return true;
-      }
+    if (obj.hasOwnProperty(key) && obj[key] !== null) {
+      return true;
+    }
   }
   return false;
-}
+};
 
-const checkForNull = (value) => {
-  if (value !== null) return value
-  else return '';
-}
+const checkForNull = (value: any) => {
+  if (value !== null) return value;
+  else return "";
+};
 
-function generateHtmlFromJson(data) {
+export function generateHtmlFromJson(data: any) {
   let html = `
   <!doctype html>
 <html lang="en">
@@ -102,73 +102,74 @@ function generateHtmlFromJson(data) {
   </thead>
   <tbody>
   `;
-  data.forEach(obj => {
-      const className = (value) => {
-          if (value === 'travel') return 'travel'
-          else if (value === 'job') return 'job'
-          else if (value === 'other') return 'other'
-      }
-      if (obj.activity === 'travel') {
-          html += `<tr class="travel">
+  data.forEach((obj: any) => {
+    const className = (value: any) => {
+      if (value === "travel") return "travel";
+      else if (value === "job") return "job";
+      else if (value === "other") return "other";
+    };
+    if (obj.activity === "travel") {
+      html += `<tr class="travel">
                   <td class="centered">${obj.activity}</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td colspan="2">${(obj.time)}</td>
-                  <td colspan="2">${(obj.description)}</td>
+                  <td colspan="2">${obj.time}</td>
+                  <td colspan="2">${obj.description}</td>
                   </tr>`;
-      }
-      else if (checkIfAllValuesAreNull(obj.address)
-          && checkIfAllValuesAreNull(obj.arrived)
-          && checkIfAllValuesAreNull(obj.departed)
-      ) {
-          html +=  `<tr class=${className(obj.activity)}>
+    } else if (
+      checkIfAllValuesAreNull(obj.address) &&
+      checkIfAllValuesAreNull(obj.arrived) &&
+      checkIfAllValuesAreNull(obj.departed)
+    ) {
+      html += `<tr class=${className(obj.activity)}>
                   <td class="centered">${obj.activity}</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td colspan="2">${(obj.time)}</td>
-                  <td colspan="2">${(obj.description)}</td>
+                  <td colspan="2">${obj.time}</td>
+                  <td colspan="2">${obj.description}</td>
                   </tr>`;
-      }
-      else if (hasNotNullValues(obj.address)
-          && checkIfAllValuesAreNull(obj.arrived)
-          && checkIfAllValuesAreNull(obj.departed)
-      ) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      hasNotNullValues(obj.address) &&
+      checkIfAllValuesAreNull(obj.arrived) &&
+      checkIfAllValuesAreNull(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.address.aroflo)}</td>
       <td colspan="2" rowspan="2"></td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
   </tr>`;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
       <td colspan="2" rowspan="2"></td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>`;
-          }
       }
-      else if (hasNotNullValues(obj.address)
-          && hasNotNullValues(obj.arrived)
-          && checkIfAllValuesAreNull(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      hasNotNullValues(obj.address) &&
+      hasNotNullValues(obj.arrived) &&
+      checkIfAllValuesAreNull(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
@@ -176,8 +177,8 @@ function generateHtmlFromJson(data) {
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
@@ -186,8 +187,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
@@ -195,18 +196,19 @@ function generateHtmlFromJson(data) {
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
       }
-      else if (hasNotNullValues(obj.address)
-          && hasNotNullValues(obj.arrived)
-          && hasNotNullValues(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      hasNotNullValues(obj.address) &&
+      hasNotNullValues(obj.arrived) &&
+      hasNotNullValues(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
@@ -215,8 +217,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
@@ -227,8 +229,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
@@ -237,19 +239,19 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
-
       }
-      else if (hasNotNullValues(obj.address)
-          && checkIfAllValuesAreNull(obj.arrived)
-          && hasNotNullValues(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      hasNotNullValues(obj.address) &&
+      checkIfAllValuesAreNull(obj.arrived) &&
+      hasNotNullValues(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
@@ -257,8 +259,8 @@ function generateHtmlFromJson(data) {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
@@ -267,8 +269,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
@@ -276,86 +278,89 @@ function generateHtmlFromJson(data) {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
       }
-      else if (checkIfAllValuesAreNull(obj.address)
-          && hasNotNullValues(obj.arrived)
-          && checkIfAllValuesAreNull(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      checkIfAllValuesAreNull(obj.address) &&
+      hasNotNullValues(obj.arrived) &&
+      checkIfAllValuesAreNull(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
       }
-      else if (checkIfAllValuesAreNull(obj.address)
-          && checkIfAllValuesAreNull(obj.arrived)
-          && hasNotNullValues(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      checkIfAllValuesAreNull(obj.address) &&
+      checkIfAllValuesAreNull(obj.arrived) &&
+      hasNotNullValues(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
       }
-      else if (checkIfAllValuesAreNull(obj.address)
-          && hasNotNullValues(obj.arrived)
-          && hasNotNullValues(obj.departed)) {
-          if (obj.address.aroflo !== null) {
-              html += `
+    } else if (
+      checkIfAllValuesAreNull(obj.address) &&
+      hasNotNullValues(obj.arrived) &&
+      hasNotNullValues(obj.departed)
+    ) {
+      if (obj.address.aroflo !== null) {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
@@ -363,8 +368,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
@@ -373,8 +378,8 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
   </tr>
           `;
-          } else {
-              html += `
+      } else {
+        html += `
           <tr class=${className(obj.activity)}>
       <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
       <td colspan="2" rowspan="2"></td>
@@ -382,13 +387,13 @@ function generateHtmlFromJson(data) {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${(obj.time)}</td>
-      <td colspan="2" rowspan="2">${(obj.description)}</td>
+      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
           `;
-          }
       }
+    }
   });
   html += `
 </tbody>
@@ -399,6 +404,6 @@ function generateHtmlFromJson(data) {
   return html;
 }
 
-module.exports = {
-  generateHtmlFromJson
-}
+// module.exports = {
+//   generateHtmlFromJson
+// }
