@@ -4,7 +4,7 @@ import fs from "fs";
 
 const filterTasks = () => {
   const parser = new XMLParser();
-  const xml = fs.readFileSync("get_schedules.xml", "utf-8");
+  const xml = fs.readFileSync("get_schedules.xml", "utf-8"); // change to api endpoint
   //   const parsed = parser.parse(xml);
   const json = parser.parse(xml);
 
@@ -17,9 +17,6 @@ const filterTasks = () => {
 
 export const parseXML = async () => {
   const tasks = filterTasks();
-
-  //   console.log(tasks);
-  //   console.log(new Date(tasks[0].startdatetime).valueOf());
 
   const mapped: NewArofloModel[] = tasks.map((task: any) => {
     return {
