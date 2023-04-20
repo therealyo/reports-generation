@@ -86,11 +86,13 @@ export const handler = async (event: any) => {
       emailDataRepository
     );
 
-    const report = reportGenerator.generateJSONTable(
+    const report = await reportGenerator.generateJSONTable(
       emailData.user,
       new Date(emailData.startDate).valueOf(),
       new Date(emailData.endDate).valueOf()
     );
+
+    // fs.writeFileSync("report-fsfsdh.pdf", JSON.stringify(report));
 
     const htmlTable = generateHtmlFromJson(report);
 
@@ -101,6 +103,8 @@ export const handler = async (event: any) => {
         htmlTable,
       }
     );
+
+    // fs.writeFileSync("test.html", htmlTable);
   } catch (err) {
     console.error(err);
   }
@@ -133,3 +137,5 @@ export const handler = async (event: any) => {
 // main().then(() => {
 //   process.exit(0);
 // });
+
+handler("sheesh");
