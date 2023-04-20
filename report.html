@@ -1,749 +1,471 @@
 
-    <!doctype html>
+  <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <title id="title">Report</title>
-    <style>
-        table {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 120%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            border-spacing: 0;
-            border: 1px solid #000;
-            margin: 50px auto 0;
-        }
-        thead {
-            background-color: #98F87E;
-        }
-        th {
-            border: 1px solid #000;
-            font-size: 18px;
-            padding: 6px 10px;
-            min-width: 180px;
-        }
-        tr {
-            border-bottom: 1px solid #000;
-        }
-        td {
-            border: 1px solid #000;
-            padding: 6px 10px;
-            max-width: 140px;
-            word-wrap: break-word;
-        }
-        .qspec {
-            background-color: #FFE599;
-        }
-        .travel {
-            background-color: #BDD6EE;
-        }
-        .job {
-            background-color: #C5E0B3;
-        }
-        .home {
-            background-color: #FFE599;
-        }
-        .empty {
-            background-color: #F7CAAC;
-        }
-        .centered {
-            text-align: center;
-        }
-        .values_name {
-            width: 44px;
-            font-size: 12px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title id="title">Report</title>
+  <style>
+      table {
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 120%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          border-spacing: 0;
+          border: 1px solid #000;
+          margin: 50px auto 0;
+      }
+      thead {
+          background-color: #98F87E;
+      }
+      th {
+          border: 1px solid #000;
+          font-size: 18px;
+          padding: 6px 10px;
+          min-width: 180px;
+      }
+      tr {
+          border-bottom: 1px solid #000;
+      }
+      td {
+          border: 1px solid #000;
+          padding: 6px 10px;
+          max-width: 140px;
+          word-wrap: break-word;
+      }
+      .qspec {
+          background-color: #FFE599;
+      }
+      .travel {
+          background-color: #BDD6EE;
+      }
+      .job {
+          background-color: #C5E0B3;
+      }
+      .home {
+          background-color: #FFE599;
+      }
+      .other {
+          background-color: #F7CAAC;
+      }
+      .centered {
+          text-align: center;
+      }
+      .values_name {
+          width: 44px;
+          font-size: 12px;
+      }
+  </style>
 </head>
 <body>
 <table>
-    <thead>
-    <tr>
-        <th colspan="1">Activity</th>
-        <th colspan="2">Address</th>
-        <th colspan="2">Arrived</th>
-        <th colspan="2">Departed</th>
-        <th colspan="2">Total time spent</th>
-        <th colspan="1">Task description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">4 h 24 min 27 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">20 Good St, A Place QLD 4660, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:54 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:19 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">31 min 4 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:19 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:50 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">25 min 0 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">82 Bad Rd, Bad QLD 4660, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:50 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:15 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">1 min 22 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:15 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:16 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">3 min 31 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:16 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:20 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">2 min 20 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:20 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:22 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">20 min 22 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:22 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:42 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">1 min 42 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:42 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:44 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">job</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">Unit 269 Number 176 Torrens Road 'Living Gems Sout</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">2:30 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">2:45 pm</td>
-        <td colspan="2" rowspan="2">31 min 12 s</td>
-        <td colspan="2" rowspan="2">CONFIRMED 13/4 2:30pm SITE MEASURE</td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Unit 269 Number 176 Torrens Road 'Living Gems Sout</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">7:44 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">8:15 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">41 min 23 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">8:15 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">8:57 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">job</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">2 Olympic Court Upper Caboolture</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">2:00 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">2:15 pm</td>
-        <td colspan="2" rowspan="2">7 min 27 s</td>
-        <td colspan="2" rowspan="2">CONFIRMED 13/4 2pm URGENT SITE MEASURE</td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">2 Olympic Court Upper Caboolture</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">8:57 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:04 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">11 min 41 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:04 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:16 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">26 min 12 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:16 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:42 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">19 min 20 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:42 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:01 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">35 min 3 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:01 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:36 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">7 min 21 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:36 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:44 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">22 min 17 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">10:44 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">11:06 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">19 min 20 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">11:06 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">11:25 am</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">58 min 24 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">11:25 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:24 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">23 min 31 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:24 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:47 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">job</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">13 Kappella Street Kippa-Ring</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">12:30 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">1:15 pm</td>
-        <td colspan="2" rowspan="2">2 min 6 s</td>
-        <td colspan="2" rowspan="2">CONFIRMED 12:30pm 13/4  INSTALL</td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">13 Kappella Street Kippa-Ring</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:47 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:49 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">30 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:49 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:50 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">28 min 51 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">12:50 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:19 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">7 min 35 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:19 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:26 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">11 min 18 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:26 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:38 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">36 min 48 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">1:38 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">2:14 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">15 min 56 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">2:14 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">2:30 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">31 min 49 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">2:30 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:02 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">job</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">14 Crestridge Crescent Morayfield</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">9:00 am</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1">12:00 pm</td>
-        <td colspan="2" rowspan="2">7 min 10 s</td>
-        <td colspan="2" rowspan="2">CONFIRMED 13/4 9am finish painting - send Scott W</td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">14 Crestridge Crescent Morayfield</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:02 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:09 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">30 min 44 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:09 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:40 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">33 min 56 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">3:40 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">4:14 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">10 min 30 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">4:14 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">4:24 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">2 h 9 min 40 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">4:24 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:34 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">13 min 9 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:34 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:47 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">other</td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">2 h 48 min 10 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">6:47 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:35 pm</td>
-    </tr>
-            
-            <tr class="job">
-        <td class="centered" colspan="1" rowspan="2">travel</td>
-        <td colspan="2" rowspan="2"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-        <td colspan="1" rowspan="1"></td>
-        <td colspan="2" rowspan="2">12 min 3 s</td>
-        <td colspan="2" rowspan="2"></td>
-    </tr>
-    <tr class="job">
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:35 pm</td>
-        <td class="values_name" colspan="1" rowspan="1">Actual = </td>
-        <td colspan="1" rowspan="1">9:47 pm</td>
-    </tr>
-            
+  <thead>
+  <tr>
+      <th colspan="1">Activity</th>
+      <th colspan="2">Address</th>
+      <th colspan="2">Arrived</th>
+      <th colspan="2">Departed</th>
+      <th colspan="2">Total time spent</th>
+      <th colspan="1">Task description</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">20 Good St, A Place QLD 4660, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">1:54 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">6:19 am</td>
+      <td colspan="2" rowspan="2">4 h 24 min 27 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">31 min 4 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">82 Bad Rd, Bad QLD 4660, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">6:50 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">7:15 am</td>
+      <td colspan="2" rowspan="2">25 min 0 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">1 min 22 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">7:16 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">7:20 am</td>
+      <td colspan="2" rowspan="2">3 min 31 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">2 min 20 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">7:22 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">7:42 am</td>
+      <td colspan="2" rowspan="2">20 min 22 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">1 min 42 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=job>
+      <td class="centered" colspan="1" rowspan="2">job</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">Unit 269 Number 176 Torrens Road 'Living Gems Sout</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">2:30 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">2:45 pm</td>
+      <td colspan="2" rowspan="2">31 min 12 s</td>
+      <td colspan="2" rowspan="2">CONFIRMED 13/4 2:30pm SITE MEASURE</td>
+  </tr>
+  <tr class=job>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">Unit 269 Number 176 Torrens Road 'Living Gems Sout</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">7:44 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">8:15 am</td>
+  </tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">41 min 23 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=job>
+      <td class="centered" colspan="1" rowspan="2">job</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">2 Olympic Court Upper Caboolture</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">2:00 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">2:15 pm</td>
+      <td colspan="2" rowspan="2">7 min 27 s</td>
+      <td colspan="2" rowspan="2">CONFIRMED 13/4 2pm URGENT SITE MEASURE</td>
+  </tr>
+  <tr class=job>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">2 Olympic Court Upper Caboolture</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">8:57 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">9:04 am</td>
+  </tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">11 min 41 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">9:16 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">9:42 am</td>
+      <td colspan="2" rowspan="2">26 min 12 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">19 min 20 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">10:01 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">10:36 am</td>
+      <td colspan="2" rowspan="2">35 min 3 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">7 min 21 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">10:44 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">11:06 am</td>
+      <td colspan="2" rowspan="2">22 min 17 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">19 min 20 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">11:25 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">12:24 pm</td>
+      <td colspan="2" rowspan="2">58 min 24 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">23 min 31 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=job>
+      <td class="centered" colspan="1" rowspan="2">job</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">13 Kappella Street Kippa-Ring</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">12:30 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">1:15 pm</td>
+      <td colspan="2" rowspan="2">2 min 6 s</td>
+      <td colspan="2" rowspan="2">CONFIRMED 12:30pm 13/4  INSTALL</td>
+  </tr>
+  <tr class=job>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">13 Kappella Street Kippa-Ring</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">12:47 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">12:49 pm</td>
+  </tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">30 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">12:50 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">1:19 pm</td>
+      <td colspan="2" rowspan="2">28 min 51 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">7 min 35 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">1:26 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">1:38 pm</td>
+      <td colspan="2" rowspan="2">11 min 18 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">36 min 48 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">2:14 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">2:30 pm</td>
+      <td colspan="2" rowspan="2">15 min 56 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">31 min 49 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=job>
+      <td class="centered" colspan="1" rowspan="2">job</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">14 Crestridge Crescent Morayfield</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">9:00 am</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">12:00 pm</td>
+      <td colspan="2" rowspan="2">7 min 10 s</td>
+      <td colspan="2" rowspan="2">CONFIRMED 13/4 9am finish painting - send Scott W</td>
+  </tr>
+  <tr class=job>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">14 Crestridge Crescent Morayfield</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">3:02 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">3:09 pm</td>
+  </tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">30 min 44 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">3:40 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">4:14 pm</td>
+      <td colspan="2" rowspan="2">33 min 56 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">10 min 30 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">4:24 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">6:34 pm</td>
+      <td colspan="2" rowspan="2">2 h 9 min 40 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">13 min 9 s</td>
+                  <td colspan="2"></td>
+                  </tr>
+          <tr class=other>
+      <td class="centered" colspan="1" rowspan="2">other</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">Somewhere, Someplace QLD 4677, Australia</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">6:47 pm</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">9:35 pm</td>
+      <td colspan="2" rowspan="2">2 h 48 min 10 s</td>
+      <td colspan="2" rowspan="2"></td>
+  </tr>
+  <tr class=other></tr>
+          <tr class="travel">
+                  <td class="centered">travel</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">12 min 3 s</td>
+                  <td colspan="2"></td>
+                  </tr>
 </tbody>
 </table>
 </body>

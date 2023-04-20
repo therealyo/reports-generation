@@ -91,27 +91,10 @@ class ReportGenerator {
             break;
           }
         }
-
-        report.push(el);
       } else if (record.status === Status.MOVING) {
-        report.push({
-          activity: "travel",
-          address: {
-            aroflo: null,
-            actual: record.location,
-          },
-          arrived: {
-            aroflo: null,
-            actual: this.formatAMPM(new Date(record.startDate!)),
-          },
-          departed: {
-            aroflo: null,
-            actual: this.formatAMPM(new Date(record.endDate!)),
-          },
-          time: record.timeSpent!,
-          description: "",
-        });
+        el.activity = "travel";
       }
+      report.push(el);
     }
 
     return report;

@@ -4,9 +4,9 @@ node_modules
 # sst
 .sst
 .build
-stacks
-packages
-sst.config.ts
+# stacks
+# packages
+# sst.config.ts
 # misc
 .DS_Store
 
@@ -14,3 +14,5 @@ sst.config.ts
 .env*.local
 
 build
+
+pdf-lambda

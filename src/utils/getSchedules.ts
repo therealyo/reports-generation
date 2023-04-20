@@ -2,7 +2,7 @@ import { NewArofloModel } from "@/database/ArofloDataTable";
 import fs from "fs/promises";
 
 const getSchedulesForTask = async (date: string) => {
-  const loadJSON = JSON.parse(String(await fs.readFile("mock/schedules.json"))); // replace it with call for api (https://apidocs.aroflo.com/#c70915bc-0d58-41bb-ac41-27785f90bb0a)
+  const loadJSON = JSON.parse(String(await fs.readFile("mock/schedules.json"))); // replace it with call for api (https://apidocs.aroflo.com/#2101ceb1-6c15-4c99-8029-62f3688f800d)
   //   console.log(loadJSON);
   return loadJSON.imsapi.zoneresponse.schedules.schedule;
 };

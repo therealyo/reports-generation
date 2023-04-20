@@ -15,6 +15,7 @@
     "migration": "npx drizzle-kit generate:pg"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.316.0",
     "drizzle-orm": "^0.23.13",
     "esbuild": "^0.17.17",
     "fast-xml-parser": "^4.2.0",

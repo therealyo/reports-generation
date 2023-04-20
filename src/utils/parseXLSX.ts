@@ -1,4 +1,5 @@
 import { NewEmailDataModel, Status } from "@/database/EmailDataTable";
+import { S3Client } from "@aws-sdk/client-s3";
 import XLSX from "xlsx";
 
 // var workbook = XLSX.readFile("ReportInbound.xlsx");
@@ -74,9 +75,13 @@ interface ParsedXLSX {
   records: NewEmailDataModel[];
 }
 
-export const parseXLSX = async () => {
+// const client = new
+
+export const parseXLSX = async (xlsx: any) => {
   const parsed = {} as ParsedXLSX;
-  const workbook = XLSX.readFile("ReportInbound.xlsx");
+  // const workbook = XLSX.readFile("ReportInbound.xlsx");
+  const workbook = XLSX.read(xlsx);
+  // const workbook =
   const sheetNameList = workbook.SheetNames;
   const sheet = workbook.Sheets[sheetNameList[0]];
   const rows: any = XLSX.utils.sheet_to_json(sheet);
