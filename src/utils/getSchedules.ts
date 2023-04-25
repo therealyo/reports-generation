@@ -5,7 +5,10 @@ import { NewArofloModel } from "@/database/ArofloDataTable";
 const getSchedulesForTask = async (date: string) => {
   const params = [
     "zone=" + encodeURIComponent("schedules"),
-    "where=" + encodeURIComponent("and|startdate|=|2021/06/18"),
+    "where=" +
+      encodeURIComponent(
+        `and|startdate|=|${new Date().getFullYear()}/${new Date().getMonth()}/${new Date().getDate()}`
+      ),
     "order=" + encodeURIComponent("startdatetime|asc"),
     "page=" + encodeURIComponent("1"),
   ];
