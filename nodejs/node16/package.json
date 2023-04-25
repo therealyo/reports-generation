@@ -1,0 +1,22 @@
+{
+    "name": "puppeteer-on-lambda",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "zip": "tsc && 7z a -r function.zip ./dist/*  node_modules/",
+        "sendToLambda": "npm run zip && aws s3 cp function.zip s3://michaelchris-documents-dev && aws lambda update-function-code --function-name test --s3-bucket michaelchris-documents-dev --s3-key function.zip --region us-east-1 && rm function.zip"
+    },
+    "author": "Oleksii Kilevoi",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^16.18.23",
+        "@types/puppeteer": "^7.0.4",
+        "typescript": "^4.1.3"
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.303.0",
+        "@sparticuz/chromium": "^112.0.2",
+        "puppeteer-core": "^19.9.1"
+    }
+}

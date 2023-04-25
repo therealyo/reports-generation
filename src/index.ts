@@ -7,17 +7,22 @@ import { parseXLSX } from "./utils/parseXLSX";
 import { getSchedules } from "./utils/getSchedules";
 import ArofloRepository from "./repositories/ArofloRepository";
 import EmailDataRepository from "./repositories/EmailDataRepository";
-import ReportGenerator from "./utils/generateReport";
+import ReportGenerator from "./utils/ReportGenerator";
 import { generateHtmlFromJson } from "./utils/htmlGeneration";
 import { S3Event } from "aws-lambda";
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  GetObjectCommand,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 import { simpleParser } from "mailparser";
-import { SecretsManager } from "aws-sdk";
+import AWS, { SecretsManager } from "aws-sdk";
 import {
   SecretsManagerClient,
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
 import { emailDataTable } from "./database/EmailDataTable";
+import nodemailer from "nodemailer";
 
 export const handler = async (event: S3Event) => {
   try {
@@ -32,12 +37,14 @@ export const handler = async (event: S3Event) => {
       })
     );
 
+    const transporter = nodemailer.createTransport({
+      SES: new AWS.SES({
+        apiVersion: "2010-12-01",
+      }),
+    });
     // await migrate(db, { migrationsFolder: './migrations' });
 
     const secretValue = JSON.parse(secrets.SecretString!);
-    // console.log(
-    //   `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`
-    // );
     const pool = new Pool({
       connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
     });
@@ -65,7 +72,7 @@ export const handler = async (event: S3Event) => {
         const xlsx = email.attachments[0].content;
 
         const emailData = await parseXLSX(xlsx);
-        // await db // uncomment when production
+        // await db
         //   .insert(emailDataTable)
         //   .values(emailData.records)
         //   .onConflictDoNothing()
@@ -95,18 +102,26 @@ export const handler = async (event: S3Event) => {
 
         const htmlTable = generateHtmlFromJson(report);
 
-        // const response = await axios.post(
-        //   "https://n3dz368pl5.execute-api.us-east-1.amazonaws.com/default/test",
-        //   {
-        //     fileKey: "test-report.pdf",
-        //     html: htmlTable,
-        //   }
-        // );
+        const pdf = await reportGenerator.generatePDFfromHTML(htmlTable);
+
+        const emailTransportAttachment = {
+          filename: `${new Date().toUTCString()}.pdf`,
+          content: pdf,
+        };
+
+        const emailParams = {
+          from: process.env.SOURCE_EMAIL,
+          to: process.env.SEND_TO,
+          subject: `${
+            emailData.user
+          } report for ${new Date().getUTCDate()}/${new Date().getUTCMonth()}/${new Date().getUTCFullYear()}`,
+          attachments: [emailTransportAttachment],
+        };
+
+        await transporter.sendMail(emailParams);
       })
     );
   } catch (err) {
     console.error(err);
   }
 };
-
-// handler("sheesh");

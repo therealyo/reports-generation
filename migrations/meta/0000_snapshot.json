@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "98e40b9a-1b03-452c-9a6e-09482672da13",
+  "id": "64e1c457-d646-4542-90de-75d97c2b3652",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "aroflo_data": {
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "varchar",
           "primaryKey": true,
           "notNull": true
         },
@@ -35,6 +35,12 @@
         "description": {
           "name": "description",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "task_id": {
+          "name": "task_id",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
@@ -77,6 +83,18 @@
           "primaryKey": false,
           "notNull": false
         },
+        "time_spent": {
+          "name": "time_spent",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "status",
+          "primaryKey": false,
+          "notNull": false
+        },
         "user_id": {
           "name": "user_id",
           "type": "varchar",
@@ -89,7 +107,15 @@
       "compositePrimaryKeys": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "status": {
+      "name": "status",
+      "values": {
+        "Stopped": "Stopped",
+        "Moving": "Moving"
+      }
+    }
+  },
   "schemas": {},
   "_meta": {
     "schemas": {},

@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1681732575023,
-      "tag": "0000_furry_the_twelve",
-      "breakpoints": false
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1681735411532,
-      "tag": "0001_oval_silver_surfer",
-      "breakpoints": false
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1681738928131,
-      "tag": "0002_short_lady_mastermind",
-      "breakpoints": false
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1681741449792,
-      "tag": "0003_sparkling_loa",
-      "breakpoints": false
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1681820745705,
-      "tag": "0004_slim_stone_men",
+      "when": 1682419575559,
+      "tag": "0000_classy_firedrake",
       "breakpoints": false
     }
   ]

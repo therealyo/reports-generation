@@ -1,12 +1,26 @@
-import { StackContext, Api } from "sst/constructs";
+import { StackContext, Api, Function, use } from "sst/constructs";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import { ReceivingEmail } from "./ReceivingEmail";
 
 export function ReportGeneration({ stack }: StackContext) {
-  //   const api = new Api(stack, "api", {
-  //     routes: {
-  //       "GET /": "packages/functions/src/lambda.handler",
-  //     },
-  //   });
-  //   stack.addOutputs({
-  //     ApiEndpoint: api.url,
-  //   });
+  // const { mainLambda } = use(ReceivingEmail);
+  const pdfGeneration = new Function(stack, "pdf-generation", {
+    handler: "src/pdfGeneration.handler",
+    layers: [
+      lambda.LayerVersion.fromLayerVersionArn(
+        stack,
+        "pdf-layer",
+        process.env.LAMBDA_LAYER_ARN!
+      ),
+    ],
+    nodejs: {
+      install: ["@sparticuz/chromium", "puppeteer-core"],
+    },
+    runtime: "nodejs16.x",
+    functionName: "pdf-generation-from-html",
+  });
+
+  return {
+    pdfGeneration,
+  };
 }

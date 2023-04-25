@@ -1,6 +1,7 @@
 import { Status, statusEnum } from "@/database/EmailDataTable";
 import ArofloRepository from "@/repositories/ArofloRepository";
 import EmailDataRepository from "@/repositories/EmailDataRepository";
+import AWS, { Lambda } from "aws-sdk";
 
 interface ReportElement {
   activity: "job" | "travel" | "other";
@@ -21,10 +22,13 @@ interface ReportElement {
 }
 
 class ReportGenerator {
+  private lambda: AWS.Lambda;
   constructor(
     private arofloRepository: ArofloRepository,
     private emailDataRepository: EmailDataRepository
-  ) {}
+  ) {
+    this.lambda = new AWS.Lambda({ region: "us-east-1" });
+  }
 
   public formatAMPM = (date: Date) => {
     let hours = date.getHours();
@@ -98,6 +102,23 @@ class ReportGenerator {
     }
 
     return report;
+  };
+
+  public generatePDFfromHTML = async (html: string) => {
+    // const lambdaArguments: SendEmailBody = {
+    //   email,
+    //   link: otpLink,
+    //   userName: user.username,
+    //   templateName: 'ResetPassword',
+    // };
+    const params: Lambda.Types.InvocationRequest = {
+      FunctionName: process.env.PDF_LAMBDA_NAME!,
+      Payload: JSON.stringify({ html: html }),
+    };
+
+    const pdf = await this.lambda.invoke(params).promise();
+    // @ts-ignore
+    return Buffer.from(JSON.parse(pdf.Payload).data);
   };
 }
 

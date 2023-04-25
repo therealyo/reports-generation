@@ -1,1 +1,0 @@
-ALTER TABLE "aroflo_data" ALTER COLUMN "id" SET DATA TYPE varchar;
