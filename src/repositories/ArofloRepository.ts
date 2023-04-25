@@ -1,7 +1,7 @@
-import { arofloTable } from "@/database/ArofloDataTable";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
-// import { PgDatabase } from "drizzle-orm/pg-core";
 import { and, asc, desc, eq, gte, lte, or } from "drizzle-orm/expressions";
+
+import { arofloTable } from "@/database/ArofloDataTable";
 
 class ArofloRepository {
   constructor(private db: NodePgDatabase) {}
@@ -25,6 +25,22 @@ class ArofloRepository {
       .execute();
 
     return results;
+  };
+
+  public getUsers = async () => {
+    return await this.db
+      .select({ userId: arofloTable.userId })
+      .from(arofloTable)
+      .execute()
+      .then((users) => {
+        return [
+          ...new Set(
+            users.map((user) => {
+              return user.userId;
+            })
+          ),
+        ];
+      });
   };
 }
 

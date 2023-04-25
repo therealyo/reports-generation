@@ -1,7 +1,6 @@
-// import { arofloTable } from "@/database/ArofloDataTable";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
-// import { PgDatabase } from "drizzle-orm/pg-core";
-import { and, asc, desc, eq, gte, lte, or } from "drizzle-orm/expressions";
+import { and, asc, eq, gte, lte } from "drizzle-orm/expressions";
+
 import { emailDataTable } from "@/database/EmailDataTable";
 
 class EmailDataRepository {

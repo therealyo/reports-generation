@@ -104,21 +104,17 @@ class ReportGenerator {
     return report;
   };
 
-  public generatePDFfromHTML = async (html: string) => {
-    // const lambdaArguments: SendEmailBody = {
-    //   email,
-    //   link: otpLink,
-    //   userName: user.username,
-    //   templateName: 'ResetPassword',
-    // };
+  public generatePDFfromHTML = async (htmls: { [userId: string]: string }) => {
     const params: Lambda.Types.InvocationRequest = {
       FunctionName: process.env.PDF_LAMBDA_NAME!,
-      Payload: JSON.stringify({ html: html }),
+      Payload: JSON.stringify({ htmls: htmls }),
     };
 
-    const pdf = await this.lambda.invoke(params).promise();
+    const pdfs = await this.lambda.invoke(params).promise();
     // @ts-ignore
-    return Buffer.from(JSON.parse(pdf.Payload).data);
+    return JSON.parse(pdfs.Payload) as {
+      [userId: string]: { type: "Buffer"; data: Buffer };
+    };
   };
 }
 

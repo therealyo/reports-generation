@@ -58,3 +58,11 @@ Name of domain that you own. Must be verified in AWS SES
 ### `BUCKET_NAME`
 
 Name of bucket that will store incoming user data(XLSX files)
+
+### `AUTHENTICATION`
+
+Authentication for AroFlo api
+
+### `AUTHORIZATION`
+
+Authorization for AroFlo api

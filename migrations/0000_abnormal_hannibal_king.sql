@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS "aroflo_data" (
 );
 
 CREATE TABLE IF NOT EXISTS "email_data" (
-	"id" serial PRIMARY KEY NOT NULL,
 	"start_date" bigint,
 	"end_date" bigint,
 	"location" varchar,
@@ -23,3 +22,5 @@ CREATE TABLE IF NOT EXISTS "email_data" (
 	"status" status,
 	"user_id" varchar
 );
+--> statement-breakpoint
+ALTER TABLE "email_data" ADD CONSTRAINT "email_data_user_id_start_date" PRIMARY KEY("user_id","start_date");

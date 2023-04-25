@@ -4,6 +4,7 @@ import { ReceivingEmail } from "./stacks/ReceivingEmail";
 import { config } from "dotenv";
 import { Database } from "./stacks/Database";
 import { ReportGeneration } from "./stacks/PDFGeneration";
+import { SendReports } from "./stacks/SendReports";
 config();
 
 export default {
@@ -17,5 +18,6 @@ export default {
     app.stack(Database);
     app.stack(ReportGeneration);
     app.stack(ReceivingEmail);
+    app.stack(SendReports);
   },
 } satisfies SSTConfig;

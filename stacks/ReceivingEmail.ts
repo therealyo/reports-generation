@@ -29,6 +29,8 @@ export function ReceivingEmail({ stack }: StackContext) {
       PDF_LAMBDA_NAME: pdfGeneration.functionName,
       SEND_TO: process.env.SEND_TO!,
       SOURCE_EMAIL: process.env.SOURCE_EMAIL!,
+      AUTHENTICATION: process.env.AUTHENTICATION!,
+      AUTHORIZATION: process.env.AUTHORIZATION!,
     },
     functionName: "report_generation",
   });

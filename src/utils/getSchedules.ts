@@ -1,13 +1,30 @@
+import axios from "axios";
+
 import { NewArofloModel } from "@/database/ArofloDataTable";
-import { mockedSchedules } from "./schedulesMock";
-import fs from "fs/promises";
 
 const getSchedulesForTask = async (date: string) => {
-  // const loadJSON = JSON.parse(
-  //   // String(await fs.readFile("./mock/schedules.json"))
-  // ); // replace it with call for api (https://apidocs.aroflo.com/#2101ceb1-6c15-4c99-8029-62f3688f800d)
-  // return loadJSON.imsapi.zoneresponse.schedules.schedule;
-  return mockedSchedules.imsapi.zoneresponse.schedules.schedule;
+  const params = [
+    "zone=" + encodeURIComponent("schedules"),
+    "where=" + encodeURIComponent("and|startdate|=|2021/06/18"),
+    "order=" + encodeURIComponent("startdatetime|asc"),
+    "page=" + encodeURIComponent("1"),
+  ];
+  const queryString = params.join("&");
+
+  const arofloSchedules = await axios.get(
+    `https://api.aroflo.com/${queryString}`,
+    {
+      headers: {
+        Authorization: process.env.AUTHORIZATION,
+        Accept: "text/json",
+        Authentication: process.env.AUTHENTICATION,
+        afdatetimeutc: new Date().toString(),
+      },
+    }
+  );
+
+  return arofloSchedules.data.imsapi.zoneresponse.schedules.schedule;
+  // return mockedSchedules.imsapi.zoneresponse.schedules.schedule;
 };
 
 export const getSchedules = async (date: string) => {

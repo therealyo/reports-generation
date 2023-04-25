@@ -3,8 +3,7 @@ import {
   bigint,
   pgEnum,
   pgTable,
-  serial,
-  text,
+  primaryKey,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -21,12 +20,18 @@ export const statusEnum = pgEnum(
   Object.values(Status) as [string, ...string[]]
 );
 
-export const emailDataTable = pgTable("email_data", {
-  id: serial("id").primaryKey(),
-  startDate: bigint("start_date", { mode: "number" }),
-  endDate: bigint("end_date", { mode: "number" }),
-  location: varchar("location"),
-  timeSpent: varchar("time_spent"),
-  status: statusEnum("status"),
-  userId: varchar("user_id"),
-});
+export const emailDataTable = pgTable(
+  "email_data",
+  {
+    // id: serial("id").primaryKey(),
+    startDate: bigint("start_date", { mode: "number" }),
+    endDate: bigint("end_date", { mode: "number" }),
+    location: varchar("location"),
+    timeSpent: varchar("time_spent"),
+    status: statusEnum("status"),
+    userId: varchar("user_id"),
+  },
+  (emailDataTable) => ({
+    cpk: primaryKey(emailDataTable.userId, emailDataTable.startDate),
+  })
+);

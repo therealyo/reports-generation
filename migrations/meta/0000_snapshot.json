@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "64e1c457-d646-4542-90de-75d97c2b3652",
+  "id": "e2aae5ff-21a3-4574-8f41-00869e874da1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "aroflo_data": {
@@ -59,12 +59,6 @@
       "name": "email_data",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
         "start_date": {
           "name": "start_date",
           "type": "bigint",
@@ -104,7 +98,15 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {}
+      "compositePrimaryKeys": {
+        "email_data_user_id_start_date": {
+          "name": "email_data_user_id_start_date",
+          "columns": [
+            "user_id",
+            "start_date"
+          ]
+        }
+      }
     }
   },
   "enums": {

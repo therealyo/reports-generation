@@ -1,14 +1,5 @@
 import { InferModel } from "drizzle-orm";
-import {
-  pgEnum,
-  pgTable,
-  serial,
-  integer,
-  uniqueIndex,
-  varchar,
-  bigint,
-  text,
-} from "drizzle-orm/pg-core";
+import { pgTable, varchar, bigint, text } from "drizzle-orm/pg-core";
 
 export type ArofloModel = InferModel<typeof arofloTable, "select">;
 export type NewArofloModel = InferModel<typeof arofloTable, "insert">;
