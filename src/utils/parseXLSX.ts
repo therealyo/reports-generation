@@ -1,10 +1,33 @@
 import { NewEmailDataModel, Status } from "@/database/EmailDataTable";
 import { S3Client } from "@aws-sdk/client-s3";
+import axios from "axios";
 import { read, utils } from "xlsx";
 
 const getUserId = async (userName: string) => {
   // implement here
-  return "JSc6UyZRTEwgCg==";
+  // return "JSc6UyZRTEwgCg==";
+  const params = [
+    "zone=" + encodeURIComponent("users"),
+    "where=" + encodeURIComponent("and|archived|=|false"),
+    "join=" + encodeURIComponent("customfields"),
+    "page=" + encodeURIComponent("1"),
+  ];
+  const queryString = params.join("&");
+
+  const arofloUsers = await axios.get(`https://api.aroflo.com/${queryString}`, {
+    headers: {
+      Authorization: process.env.AUTHORIZATION,
+      Accept: "text/json",
+      Authentication: process.env.AUTHENTICATION,
+      afdatetimeutc: new Date().toString(),
+    },
+  });
+
+  const user = arofloUsers.data.zoneresponse.users.filter(
+    (u: any) => u.customfields.value === userName
+  );
+
+  return user.customfields.fieldid;
 };
 
 function excelDateToJSDate(serial: number) {
@@ -49,7 +72,6 @@ export const parseXLSX = async (xlsx: any) => {
   const sheet = workbook.Sheets[sheetNameList[0]];
   const rows: any = utils.sheet_to_json(sheet);
 
-  // get date and userId from excel report
   await Promise.all(
     rows.map(async (row: any) => {
       if (row.Report === "Object:")
