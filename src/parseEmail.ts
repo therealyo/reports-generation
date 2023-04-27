@@ -2,8 +2,6 @@ import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import { arofloTable } from "./database/ArofloDataTable";
-import { parseXLSX } from "./utils/parseXLSX";
-import { getSchedules } from "./utils/getSchedules";
 import { S3Event } from "aws-lambda";
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { simpleParser } from "mailparser";
@@ -13,7 +11,8 @@ import {
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
 import { emailDataTable } from "./database/EmailDataTable";
-import nodemailer from "nodemailer";
+import ArofloApi from "./externalApi/ArofloApi";
+import XLSXParser from "./utils/XLSXParser";
 
 export const handler = async (event: S3Event) => {
   try {
@@ -27,7 +26,6 @@ export const handler = async (event: S3Event) => {
         VersionStage: "AWSCURRENT",
       })
     );
-    // await migrate(db, { migrationsFolder: './migrations' });
 
     const secretValue = JSON.parse(secrets.SecretString!);
     const pool = new Pool({
@@ -43,6 +41,9 @@ export const handler = async (event: S3Event) => {
       },
     });
 
+    const arofloApi = new ArofloApi();
+    const xlsxParser = new XLSXParser(arofloApi);
+
     await Promise.all(
       event.Records.map(async (record) => {
         const key = record.s3.object.key;
@@ -56,7 +57,7 @@ export const handler = async (event: S3Event) => {
         const email = await simpleParser(bytes);
         const xlsx = email.attachments[0].content;
 
-        const emailData = await parseXLSX(xlsx);
+        const emailData = await xlsxParser.parseXLSX(xlsx);
         await db
           .insert(emailDataTable)
           .values(emailData.records)
@@ -64,8 +65,7 @@ export const handler = async (event: S3Event) => {
           .execute();
 
         // // const tasks = await getTasks(emailData.date); // need further exploration of tasks api
-        const schedules = await getSchedules(emailData.startDate);
-
+        const schedules = await arofloApi.getSchedules(emailData.startDate);
         await db
           .insert(arofloTable)
           .values(schedules)

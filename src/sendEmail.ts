@@ -31,7 +31,6 @@ export const handler = async (event: S3Event) => {
         apiVersion: "2010-12-01",
       }),
     });
-    // await migrate(db, { migrationsFolder: './migrations' });
 
     const secretValue = JSON.parse(secrets.SecretString!);
     const pool = new Pool({
@@ -48,7 +47,6 @@ export const handler = async (event: S3Event) => {
 
     const users = await arofloRepository.getUsers();
 
-    console.log("Users: ", users);
     const startDate = new Date();
     startDate.setHours(0);
     startDate.setMinutes(0);

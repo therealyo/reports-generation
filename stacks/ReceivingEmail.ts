@@ -16,7 +16,7 @@ export function ReceivingEmail({ stack }: StackContext) {
   });
 
   const lambda = new Function(stack, "bucket-handler", {
-    handler: "src/index.handler",
+    handler: "src/parseEmail.handler",
     vpc,
     securityGroups: [secGroup],
     environment: {

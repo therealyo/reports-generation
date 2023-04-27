@@ -27,7 +27,24 @@ To deploy application run following commands:
 
 ## POST-DEPLOYMENT
 
-Run migrations from migrations folder.
+After successful deployment secret with database credentials will appear at AWS Secrets Manager.
+
+To run migration:
+
+1. Go to AWS Secrets Manager and retrieve database credentials from newly created secret.
+2. Set values from secret to _.env_:
+   - **DB_USERNAME** to username value of the secret
+   - **DB_PORT** to port value of the secret
+   - **DB_HOST** to host value of the secret
+   - **DB_NAME** to dbname value of the secret
+   - **DB_PASSWORD** to password value of the secret
+3. Run:
+
+```bash
+npm run migrate-database
+```
+
+<!-- Run migrations from migrations folder. -->
 
 ## ENVIRONMENT
 
@@ -66,3 +83,15 @@ Authentication for AroFlo api
 ### `AUTHORIZATION`
 
 Authorization for AroFlo api
+
+## DONT FORGET TO ADD IT TO .ENV
+
+### `DB_USERNAME`
+
+### `DB_PASSWORD`
+
+### `DB_HOST`
+
+### `DB_PORT`
+
+### `DB_NAME`

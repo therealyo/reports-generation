@@ -18,3 +18,7 @@ build
 pdf-lambda
 
 .env
+
+migrator
+
+test.ts

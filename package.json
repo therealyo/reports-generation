@@ -12,7 +12,9 @@
     "sst:remove": "sst remove",
     "sst:console": "sst console",
     "typecheck": "tsc --noEmit",
-    "migration": "npx drizzle-kit generate:pg"
+    "migration": "npx drizzle-kit generate:pg",
+    "build:migrator": "esbuild src/scripts/migrate.ts --platform=node --target=node18.4 --format=cjs --bundle --minify --main-fields=main --outfile=migrator/index.cjs  --external:pg-native",
+    "migrate-database": "npm run build:migrator && node migrator/index.cjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.316.0",
