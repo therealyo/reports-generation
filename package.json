@@ -26,8 +26,11 @@
     "esbuild": "^0.17.17",
     "fast-xml-parser": "^4.2.0",
     "mailparser": "^3.6.4",
+    "node-xlsx": "^0.21.2",
     "nodemailer": "^6.9.1",
+    "pdf-lib": "^1.17.1",
     "pg": "^8.10.0",
+    "puppeteer": "^19.11.1",
     "puppeteer-core": "^19.9.1",
     "xlsx": "^0.18.5"
   },

@@ -4,6 +4,7 @@ import {
   pgEnum,
   pgTable,
   primaryKey,
+  serial,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -23,7 +24,7 @@ export const statusEnum = pgEnum(
 export const emailDataTable = pgTable(
   "email_data",
   {
-    // id: serial("id").primaryKey(),
+    userName: varchar("name"),
     startDate: bigint("start_date", { mode: "number" }),
     endDate: bigint("end_date", { mode: "number" }),
     location: varchar("location"),

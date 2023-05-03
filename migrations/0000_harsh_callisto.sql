@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS "aroflo_data" (
 );
 
 CREATE TABLE IF NOT EXISTS "email_data" (
+	"name" varchar,
 	"start_date" bigint,
 	"end_date" bigint,
 	"location" varchar,

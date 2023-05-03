@@ -3,7 +3,8 @@ import ArofloRepository from "@/repositories/ArofloRepository";
 import EmailDataRepository from "@/repositories/EmailDataRepository";
 import AWS, { Lambda } from "aws-sdk";
 
-interface ReportElement {
+export interface ReportElement {
+  name: string;
   activity: "job" | "travel" | "other";
   address: {
     aroflo: string | null;
@@ -19,6 +20,11 @@ interface ReportElement {
   };
   time: string;
   description: string;
+}
+
+export interface Report {
+  name: string;
+  elements: ReportElement[];
 }
 
 class ReportGenerator {
@@ -59,62 +65,65 @@ class ReportGenerator {
         endDate
       );
 
-    const report = [] as ReportElement[];
+    if (actualData.length !== 0) {
+      const report = {
+        name: actualData[0].userName!,
+        elements: [] as ReportElement[],
+      } as Report;
 
-    for (let record of actualData) {
-      let el = {
-        activity: "other",
-        address: {
-          aroflo: null,
-          actual: record.location,
-        },
-        arrived: {
-          aroflo: null,
-          actual: this.formatAMPM(new Date(record.startDate!)),
-        },
-        departed: {
-          aroflo: null,
-          actual: this.formatAMPM(new Date(record.endDate!)),
-        },
-        time: record.timeSpent!,
-        description: "",
-      } as ReportElement;
+      for (let record of actualData) {
+        let el = {
+          activity: "other",
+          address: {
+            aroflo: null,
+            actual: record.location,
+          },
+          arrived: {
+            aroflo: null,
+            actual: this.formatAMPM(new Date(record.startDate!)),
+          },
+          departed: {
+            aroflo: null,
+            actual: this.formatAMPM(new Date(record.endDate!)),
+          },
+          time: record.timeSpent!,
+          description: "",
+        } as ReportElement;
 
-      if (record.status === Status.STOPPED) {
-        for (let arofloRecord of arofloData) {
-          if (arofloRecord.location === record.location) {
-            el.activity = "job";
-            el.address.aroflo = arofloRecord.location;
-            el.arrived.aroflo = this.formatAMPM(
-              new Date(arofloRecord.startDate!)
-            );
-            el.departed.aroflo = this.formatAMPM(
-              new Date(arofloRecord.endDate!)
-            );
-            el.description = arofloRecord.description!;
-            break;
+        if (record.status === Status.STOPPED) {
+          for (let arofloRecord of arofloData) {
+            if (arofloRecord.location === record.location) {
+              el.activity = "job";
+              el.address.aroflo = arofloRecord.location;
+              el.arrived.aroflo = this.formatAMPM(
+                new Date(arofloRecord.startDate!)
+              );
+              el.departed.aroflo = this.formatAMPM(
+                new Date(arofloRecord.endDate!)
+              );
+              el.description = arofloRecord.description!;
+              break;
+            }
           }
+        } else if (record.status === Status.MOVING) {
+          el.activity = "travel";
         }
-      } else if (record.status === Status.MOVING) {
-        el.activity = "travel";
+        report.elements.push(el);
       }
-      report.push(el);
-    }
 
-    return report;
+      return report;
+    }
   };
 
-  public generatePDFfromHTML = async (htmls: { [userId: string]: string }) => {
+  public generatePDFfromHTML = async (html: string) => {
     const params: Lambda.Types.InvocationRequest = {
       FunctionName: process.env.PDF_LAMBDA_NAME!,
-      Payload: JSON.stringify({ htmls: htmls }),
+      Payload: JSON.stringify({ html }),
     };
 
-    const pdfs = await this.lambda.invoke(params).promise();
+    const pdf = await this.lambda.invoke(params).promise();
     // @ts-ignore
-    return JSON.parse(pdfs.Payload) as {
-      [userId: string]: { type: "Buffer"; data: Buffer };
-    };
+    return Buffer.from(JSON.parse(pdf.Payload).data);
   };
 }
 

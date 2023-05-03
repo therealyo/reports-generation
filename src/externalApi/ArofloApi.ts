@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { NewArofloModel } from "@/database/ArofloDataTable";
-// import { mockedSchedules } from "@/utils/schedulesMock";
+import { mockedSchedules } from "@/utils/schedulesMock";
 
 class ArofloApi {
   public readonly instance: AxiosInstance;
@@ -18,8 +18,8 @@ class ArofloApi {
     });
   }
 
-  public getUserId = async (userName: string) => {
-    // mocked id for testing
+  public getUsers = async () => {
+    // // mocked id for testing
     // return "JSc6UyZRTEwgCg==";
     const params = [
       "zone=" + encodeURIComponent("users"),
@@ -28,14 +28,9 @@ class ArofloApi {
       "page=" + encodeURIComponent("1"),
     ];
     const queryString = params.join("&");
-
     const arofloUsers = await this.instance.get(`?${queryString}`);
 
-    const user = arofloUsers.data.zoneresponse.users.filter(
-      (u: any) => u.customfields.value === userName
-    );
-
-    return user.customfields.fieldid;
+    return arofloUsers.data.zoneresponse.users;
   };
 
   public getSchedules = async (date: string) => {

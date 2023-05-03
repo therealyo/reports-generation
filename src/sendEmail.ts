@@ -1,10 +1,10 @@
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
+import Mail from "nodemailer/lib/mailer";
 
 import ArofloRepository from "./repositories/ArofloRepository";
 import EmailDataRepository from "./repositories/EmailDataRepository";
-import ReportGenerator from "./utils/ReportGenerator";
-import { generateHtmlFromJson } from "./utils/htmlGeneration";
+import ReportGenerator, { Report } from "./utils/ReportGenerator";
 import { S3Event } from "aws-lambda";
 import AWS from "aws-sdk";
 import {
@@ -13,7 +13,12 @@ import {
 } from "@aws-sdk/client-secrets-manager";
 import nodemailer from "nodemailer";
 
-export const handler = async (event: S3Event) => {
+import {
+  generateHtmlFromJson,
+  generateReportHTML,
+} from "./utils/htmlGeneration";
+
+export const handler = async (event: any) => {
   try {
     const secretsManager = new SecretsManagerClient({
       region: "us-east-1",
@@ -53,7 +58,7 @@ export const handler = async (event: S3Event) => {
     startDate.setSeconds(0);
     const endDate = new Date(startDate.valueOf() + 86400000);
 
-    const reports: { [userId: string]: string } = {};
+    const reports = [] as Report[];
 
     await Promise.all(
       users.map(async (userId) => {
@@ -63,30 +68,38 @@ export const handler = async (event: S3Event) => {
           endDate.valueOf()
         );
 
-        if (report.length !== 0) {
-          const htmlTable = generateHtmlFromJson(report);
-          reports[userId!] = htmlTable;
+        if (report) {
+          reports.push(report);
         }
       })
     );
-    const pdfs = await reportGenerator.generatePDFfromHTML(reports);
 
-    // @ts-ignore
-    for (const [userId, pdf] of Object.entries(pdfs)) {
-      const emailTransportAttachment = {
-        filename: `${new Date().toUTCString()}.pdf`,
-        content: Buffer.from(pdf.data),
-      };
+    const attachments = [] as Mail.Attachment[];
 
-      const emailParams = {
-        from: process.env.SOURCE_EMAIL,
-        to: process.env.SEND_TO,
-        subject: `${userId} report for ${new Date().getUTCDate()}/${new Date().getUTCMonth()}/${new Date().getUTCFullYear()}`,
-        attachments: [emailTransportAttachment],
-      };
+    const html = generateReportHTML(reports);
+    attachments.push({
+      filename: `Report for ${new Date().getUTCFullYear()}/${
+        new Date().getUTCMonth() + 1
+      }/${new Date().getUTCDate()}.html`,
+      content: html,
+    });
 
-      await transporter.sendMail(emailParams);
-    }
+    const pdf = await reportGenerator.generatePDFfromHTML(html);
+    attachments.push({
+      filename: `Report for ${new Date().getUTCFullYear()}/${
+        new Date().getUTCMonth() + 1
+      }/${new Date().getUTCDate()}.pdf`,
+      content: pdf,
+    });
+
+    const emailParams: Mail.Options = {
+      from: process.env.SOURCE_EMAIL,
+      to: process.env.SEND_TO,
+      subject: `Report for ${new Date().getUTCFullYear()}/${new Date().getUTCMonth()}/${new Date().getUTCDate()}`,
+      attachments,
+    };
+
+    await transporter.sendMail(emailParams);
   } catch (err) {
     console.error(err);
   }

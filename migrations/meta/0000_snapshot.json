@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "ab8890bd-b24c-42b3-a069-25219d97f8b9",
+  "id": "2f469519-5127-440b-9797-71dadc110811",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "aroflo_data": {
@@ -59,6 +59,12 @@
       "name": "email_data",
       "schema": "",
       "columns": {
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
         "start_date": {
           "name": "start_date",
           "type": "bigint",

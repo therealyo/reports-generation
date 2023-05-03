@@ -3,8 +3,7 @@ import puppeteer from "puppeteer-core";
 
 export async function handler(event: any) {
   try {
-    const htmls = event.htmls as { [userId: string]: string };
-    const pdfs: { [userId: string]: Buffer } = {};
+    const html = event.html;
 
     chromium.setHeadlessMode = true;
     chromium.setGraphicsMode = false;
@@ -17,21 +16,17 @@ export async function handler(event: any) {
       ignoreHTTPSErrors: true,
     });
 
-    for (const [userId, html] of Object.entries(htmls)) {
-      const page = await browser.newPage();
-      await page.setContent(html);
-      const pdfFile = await page.pdf({
-        printBackground: true,
-        margin: { top: 30, bottom: 30 },
-        width: 1300,
-      });
-
-      pdfs[userId] = pdfFile;
-    }
+    const page = await browser.newPage();
+    await page.setContent(html);
+    const pdfFile = await page.pdf({
+      printBackground: true,
+      // margin: { top: 30, bottom: 30 },
+      // width: 1300,
+    });
 
     await browser.close();
 
-    return pdfs;
+    return pdfFile;
   } catch (err) {
     console.error(err);
   }

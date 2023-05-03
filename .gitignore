@@ -21,4 +21,7 @@ pdf-lambda
 
 migrator
 
-test.ts
+test.*
+test-copy.*
+
+cdk.context.json

@@ -1,11 +1,13 @@
 import { read, utils } from "xlsx";
-import { NewEmailDataModel, Status } from "@/database/EmailDataTable";
+
+import { NewEmailDataModel, Status } from "../database/EmailDataTable";
 import ArofloApi from "@/externalApi/ArofloApi";
 
 interface ParsedXLSX {
   startDate: string;
   endDate: string;
-  user: string;
+  userName: string;
+  userId: string;
   records: NewEmailDataModel[];
 }
 
@@ -39,48 +41,57 @@ export default class XLSXParser {
   };
 
   public parseXLSX = async (xlsx: any) => {
-    const parsed = {} as ParsedXLSX;
+    const parsed = [] as ParsedXLSX[];
     const workbook = read(xlsx);
     const sheetNameList = workbook.SheetNames;
     const sheet = workbook.Sheets[sheetNameList[0]];
     const rows: any = utils.sheet_to_json(sheet);
 
-    await Promise.all(
-      rows.map(async (row: any) => {
-        if (row.Report === "Object:")
-          parsed.user = await this.arofloApi.getUserId(row["__EMPTY"]);
-        if (row.Report === "Period:") {
-          parsed.startDate = row["__EMPTY"].split(" ")[0].replace(/-/g, "/");
-          parsed.endDate = row["__EMPTY"].split(" ")[3].replace(/-/g, "/");
-        }
-      })
-    );
+    const users = await this.arofloApi.getUsers();
 
-    parsed.records = rows
-      .map((row: any) => {
-        if (Object.keys(row).length > 2 && row.Report !== "Status") {
-          if (row.Report === Status.STOPPED) {
-            return {
-              startDate: this.excelDateToJSDate(row["__EMPTY"]),
-              endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
-              timeSpent: row["__EMPTY_2"],
-              location: row["__EMPTY_3"],
-              userId: parsed.user,
-              status: Status.STOPPED,
-            };
-          } else if (row.Report === Status.MOVING) {
-            return {
-              startDate: this.excelDateToJSDate(row["__EMPTY"]),
-              endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
-              timeSpent: row["__EMPTY_2"],
-              userId: parsed.user,
-              location: null,
-              status: Status.MOVING,
-            };
-          }
+    let userData = {} as ParsedXLSX;
+    rows.map((row: any) => {
+      if (row.Report === "Object:") {
+        if (parsed.length !== 0) {
+          userData = {} as ParsedXLSX;
         }
-      })
-      .filter((record: NewEmailDataModel) => record);
+        userData.records = [] as NewEmailDataModel[];
+        userData.userName = row["__EMPTY"];
+
+        const user = users.filter(
+          (u: any) => u.customfields.value === userData.userName
+        );
+        userData.userId = user.customfields.fieldid;
+        parsed.push(userData);
+      }
+      if (row.Report === "Period:") {
+        userData.startDate = row["__EMPTY"].split(" ")[0].replace(/-/g, "/");
+        userData.endDate = row["__EMPTY"].split(" ")[3].replace(/-/g, "/");
+      }
+      if (Object.keys(row).length > 2 && row.Report !== "Status") {
+        if (row.Report === Status.STOPPED) {
+          userData.records.push({
+            startDate: this.excelDateToJSDate(row["__EMPTY"]),
+            endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
+            timeSpent: row["__EMPTY_2"],
+            location: row["__EMPTY_3"],
+            userId: userData.userId,
+            userName: userData.userName,
+            status: Status.STOPPED,
+          });
+        } else if (row.Report === Status.MOVING) {
+          userData.records.push({
+            startDate: this.excelDateToJSDate(row["__EMPTY"]),
+            endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
+            timeSpent: row["__EMPTY_2"],
+            userId: userData.userId,
+            location: null,
+            userName: userData.userName,
+            status: Status.MOVING,
+          });
+        }
+      }
+    });
 
     return parsed;
   };

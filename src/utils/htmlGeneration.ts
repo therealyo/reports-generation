@@ -1,3 +1,7 @@
+// import { ReportElement, Report } from "../../index";
+import { NewEmailDataModel } from "@/database/EmailDataTable";
+import { ReportElement, Report } from "./ReportGenerator";
+
 const checkIfAllValuesAreNull = (obj: any) => {
   for (let key in obj) {
     if (obj.hasOwnProperty(key) && obj[key] !== null) {
@@ -21,75 +25,10 @@ const checkForNull = (value: any) => {
   else return "";
 };
 
-export function generateHtmlFromJson(data: any) {
+export const generateHtmlFromJson = (data: Report) => {
   let html = `
-  <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <title id="title">Report</title>
-  <style>
-      table {
-          font-family: 'Roboto', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 120%;
-          border-collapse: collapse;
-          table-layout: fixed;
-          border-spacing: 0;
-          border: 1px solid #000;
-          margin: 50px auto 0;
-      }
-      thead {
-          background-color: #98F87E;
-      }
-      th {
-          border: 1px solid #000;
-          font-size: 18px;
-          padding: 6px 10px;
-          min-width: 180px;
-      }
-      tr {
-          border-bottom: 1px solid #000;
-      }
-      td {
-          border: 1px solid #000;
-          padding: 6px 10px;
-          max-width: 140px;
-          word-wrap: break-word;
-      }
-      .qspec {
-          background-color: #FFE599;
-      }
-      .travel {
-          background-color: #BDD6EE;
-      }
-      .job {
-          background-color: #C5E0B3;
-      }
-      .home {
-          background-color: #FFE599;
-      }
-      .other {
-          background-color: #F7CAAC;
-      }
-      .centered {
-          text-align: center;
-      }
-      .values_name {
-          width: 44px;
-          font-size: 12px;
-      }
-  </style>
-</head>
-<body>
-<table>
+  <h1>${data.name}'s Report</h1>
+  <table>
   <thead>
   <tr>
       <th colspan="1">Activity</th>
@@ -102,8 +41,8 @@ export function generateHtmlFromJson(data: any) {
   </thead>
   <tbody>
   `;
-  data.forEach((obj: any) => {
-    const className = (value: any) => {
+  data.elements.forEach((obj: ReportElement) => {
+    const className = (value: string) => {
       if (value === "travel") return "travel";
       else if (value === "job") return "job";
       else if (value === "other") return "other";
@@ -396,14 +335,96 @@ export function generateHtmlFromJson(data: any) {
     }
   });
   html += `
-</tbody>
+  </tbody>
 </table>
+  `;
+
+  return html;
+};
+
+interface ParsedXLSX {
+  startDate: string;
+  endDate: string;
+  userName: string;
+  userId: string;
+  records: NewEmailDataModel[];
+}
+
+export function generateReportHTML(data: Report[]) {
+  let html = `
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title id="title">Report</title>
+  <style>
+      table {
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 120%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          border-spacing: 0;
+          border: 1px solid #000;
+          margin: 50px auto 0;
+      }
+      thead {
+          background-color: #98F87E;
+      }
+      th {
+          border: 1px solid #000;
+          font-size: 18px;
+          padding: 6px 10px;
+          min-width: 180px;
+      }
+      tr {
+          border-bottom: 1px solid #000;
+      }
+      td {
+          border: 1px solid #000;
+          padding: 6px 10px;
+          max-width: 140px;
+          word-wrap: break-word;
+      }
+      .qspec {
+          background-color: #FFE599;
+      }
+      .travel {
+          background-color: #BDD6EE;
+      }
+      .job {
+          background-color: #C5E0B3;
+      }
+      .home {
+          background-color: #FFE599;
+      }
+      .other {
+          background-color: #F7CAAC;
+      }
+      .centered {
+          text-align: center;
+      }
+      .values_name {
+          width: 44px;
+          font-size: 12px;
+      }
+      h1 {
+        text-align: center;
+      }
+  </style>
+</head>
+<body>`;
+  data.forEach((d) => (html += generateHtmlFromJson(d)));
+  html += `
 </body>
 </html>`;
 
   return html;
 }
-
-// module.exports = {
-//   generateHtmlFromJson
-// }
