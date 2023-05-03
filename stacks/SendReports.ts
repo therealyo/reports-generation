@@ -23,7 +23,7 @@ export function SendReports({ stack }: StackContext) {
     job: sendEmailsLambda,
     cdk: {
       rule: {
-        schedule: Schedule.expression("cron(* * * * ? *)"),
+        schedule: Schedule.expression("cron(0 14 * * ? *)"),
       },
     },
   });
