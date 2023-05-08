@@ -1,22 +1,55 @@
+import crypto from "crypto";
 import axios, { AxiosInstance } from "axios";
 import { NewArofloModel } from "@/database/ArofloDataTable";
 import { mockedSchedules } from "@/utils/schedulesMock";
 
 class ArofloApi {
   public readonly instance: AxiosInstance;
+  private readonly secret: string = process.env.SECRET_KEY!;
+  private readonly hostIp = process.env.HOST_IP;
+  private readonly accept = "text/json";
   constructor() {
     this.instance = axios.create({
       maxBodyLength: Infinity,
       baseURL: "https://api.aroflo.com",
-      headers: {
-        Authorization: process.env.AUTHORIZATION,
-        Accept: "text/json",
-        HostIP: "XXX.XXX.XXX.XXX",
-        Authentication: process.env.AUTHENTICATION,
-        afdatetimeutc: new Date().valueOf(),
-      },
     });
   }
+
+  private getArofloAuth = (
+    requestType: "GET" | "POST",
+    queryString: string
+  ) => {
+    const date = new Date().toISOString();
+    const urlPath = "";
+
+    const authorization =
+      "uencoded=" +
+      encodeURIComponent(process.env.uEncoded!) +
+      "&pencoded=" +
+      encodeURIComponent(process.env.pEncoded!) +
+      "&orgEncoded=" +
+      encodeURIComponent(process.env.orgEncoded!);
+    const payload: string[] = [requestType];
+
+    payload.push(urlPath);
+    payload.push(this.accept);
+    payload.push(authorization);
+    payload.push(date);
+    payload.push(queryString);
+
+    const hmac = crypto.createHmac("sha512", this.secret);
+    const hash = hmac.update(payload.join("+"));
+
+    const hmacSignature = hash.digest("hex");
+
+    return {
+      urlPath,
+      accept: this.accept,
+      Authorization: authorization,
+      af_hmac_signature: hmacSignature,
+      timestamp: date,
+    };
+  };
 
   public getUsers = async () => {
     // // mocked id for testing
@@ -28,7 +61,16 @@ class ArofloApi {
       "page=" + encodeURIComponent("1"),
     ];
     const queryString = params.join("&");
-    const arofloUsers = await this.instance.get(`?${queryString}`);
+    const auth = this.getArofloAuth("GET", queryString);
+    const arofloUsers = await this.instance.get(`?${queryString}`, {
+      headers: {
+        Accept: auth.accept,
+        Authorization: auth.Authorization,
+        HostIP: this.hostIp,
+        afdatetimeutc: auth.timestamp,
+        Authentication: `HMAC ${auth.af_hmac_signature}`,
+      },
+    });
 
     return arofloUsers.data.zoneresponse.users;
   };
@@ -45,8 +87,16 @@ class ArofloApi {
       "page=" + encodeURIComponent("1"),
     ];
     const queryString = params.join("&");
-
-    const arofloSchedules = await this.instance.get(`?${queryString}`);
+    const auth = this.getArofloAuth("GET", queryString);
+    const arofloSchedules = await this.instance.get(`?${queryString}`, {
+      headers: {
+        Accept: auth.accept,
+        Authorization: auth.Authorization,
+        HostIP: this.hostIp,
+        afdatetimeutc: auth.timestamp,
+        Authentication: `HMAC ${auth.af_hmac_signature}`,
+      },
+    });
 
     const taskSchedules =
       arofloSchedules.data.imsapi.zoneresponse.schedules.schedule;

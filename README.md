@@ -76,13 +76,13 @@ Name of domain that you own. Must be verified in AWS SES
 
 Name of bucket that will store incoming user data(XLSX files)
 
-### `AUTHENTICATION`
+### `HOST_IP`
 
-Authentication for AroFlo api
+IP we are sending from
 
-### `AUTHORIZATION`
+### `SECRET_KEY`
 
-Authorization for AroFlo api
+Secret key is a new auth key shown once only in the AroFloAPI Settings page.
 
 ## DONT FORGET TO ADD IT TO .ENV
 
