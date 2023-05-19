@@ -58,13 +58,15 @@ export const handler = async (event: S3Event) => {
         const xlsx = email.attachments[0].content;
 
         const emailData = await xlsxParser.parseXLSX(xlsx);
+
         await Promise.all(
           emailData.map(async (data) => {
-            await db
-              .insert(emailDataTable)
-              .values(data.records)
-              .onConflictDoNothing()
-              .execute();
+            if (data.records)
+              await db
+                .insert(emailDataTable)
+                .values(data.records)
+                .onConflictDoNothing()
+                .execute();
           })
         );
         // // const tasks = await getTasks(emailData.date); // need further exploration of tasks api

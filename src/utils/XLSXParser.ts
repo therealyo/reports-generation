@@ -43,56 +43,60 @@ export default class XLSXParser {
   public parseXLSX = async (xlsx: any) => {
     const parsed = [] as ParsedXLSX[];
     const workbook = read(xlsx);
-    const sheetNameList = workbook.SheetNames;
-    const sheet = workbook.Sheets[sheetNameList[0]];
-    const rows: any = utils.sheet_to_json(sheet);
 
     const users = await this.arofloApi.getUsers();
+    const drivers = users.filter((user: any) => {
+      return user.customfields.length > 0;
+    });
 
     let userData = {} as ParsedXLSX;
-    rows.map((row: any) => {
-      if (row.Report === "Object:") {
+    const sheets = Object.values(workbook.Sheets);
+    sheets.forEach((sheet: any) => {
+      if (sheet.A1.v === "Object:") {
         if (parsed.length !== 0) {
           userData = {} as ParsedXLSX;
         }
         userData.records = [] as NewEmailDataModel[];
-        userData.userName = row["__EMPTY"];
+        userData.userName = sheet.B1.v;
 
-        const user = users.filter(
-          (u: any) => u.customfields.value === userData.userName
-        );
-        userData.userId = user.customfields.fieldid;
+        const [user] = drivers.filter((u: any) => {
+          return u.customfields[0].value === userData.userName;
+        });
+
+        if (user) userData.userId = user.customfields[0].fieldid;
+        userData.startDate = sheet.B2.v.split(" ")[0].replace(/-/g, "/");
+        userData.endDate = sheet.B2.v.split(" ")[3].replace(/-/g, "/");
         parsed.push(userData);
       }
-      if (row.Report === "Period:") {
-        userData.startDate = row["__EMPTY"].split(" ")[0].replace(/-/g, "/");
-        userData.endDate = row["__EMPTY"].split(" ")[3].replace(/-/g, "/");
-      }
-      if (Object.keys(row).length > 2 && row.Report !== "Status") {
-        if (row.Report === Status.STOPPED) {
-          userData.records.push({
-            startDate: this.excelDateToJSDate(row["__EMPTY"]),
-            endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
-            timeSpent: row["__EMPTY_2"],
-            location: row["__EMPTY_3"],
-            userId: userData.userId,
-            userName: userData.userName,
-            status: Status.STOPPED,
-          });
-        } else if (row.Report === Status.MOVING) {
-          userData.records.push({
-            startDate: this.excelDateToJSDate(row["__EMPTY"]),
-            endDate: this.excelDateToJSDate(row["__EMPTY_1"]),
-            timeSpent: row["__EMPTY_2"],
-            userId: userData.userId,
-            location: null,
-            userName: userData.userName,
-            status: Status.MOVING,
-          });
+
+      if (sheet.A1.v === "Status") {
+        for (let rowId of Object.keys(sheet)) {
+          const rowNumber = rowId.slice(1, rowId.length);
+          if (rowId.includes("A") && sheet[rowId].v === Status.STOPPED) {
+            const rowNumber = rowId.slice(1, rowId.length);
+            userData.records.push({
+              startDate: this.excelDateToJSDate(sheet[`B${rowNumber}`].v),
+              endDate: this.excelDateToJSDate(sheet[`C${rowNumber}`].v),
+              timeSpent: sheet[`D${rowNumber}`].v,
+              location: sheet[`E${rowNumber}`].v,
+              userId: userData.userId,
+              userName: userData.userName,
+              status: Status.STOPPED,
+            });
+          } else if (rowId.includes("A") && sheet[rowId].v === Status.MOVING) {
+            userData.records.push({
+              startDate: this.excelDateToJSDate(sheet[`B${rowNumber}`].v),
+              endDate: this.excelDateToJSDate(sheet[`C${rowNumber}`].v),
+              timeSpent: sheet[`D${rowNumber}`].v,
+              userId: userData.userId,
+              location: null,
+              userName: userData.userName,
+              status: Status.MOVING,
+            });
+          }
         }
       }
     });
-
     return parsed;
   };
 }
