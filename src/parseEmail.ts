@@ -59,18 +59,17 @@ export const handler = async (event: S3Event) => {
 
         const emailData = await xlsxParser.parseXLSX(xlsx);
 
-        await Promise.all(
-          emailData.map(async (data) => {
-            if (data.records)
-              await db
-                .insert(emailDataTable)
-                .values(data.records)
-                .onConflictDoNothing()
-                .execute();
-          })
-        );
+        for (let user of emailData) {
+          if (user.records.length)
+            await db
+              .insert(emailDataTable)
+              .values(user.records)
+              .onConflictDoNothing()
+              .execute();
+        }
         // // const tasks = await getTasks(emailData.date); // need further exploration of tasks api
         const schedules = await arofloApi.getSchedules(emailData[0].startDate);
+        // console.log(schedules);
         await db
           .insert(arofloTable)
           .values(schedules)

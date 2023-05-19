@@ -92,7 +92,7 @@ class ReportGenerator {
 
         if (record.status === Status.STOPPED) {
           for (let arofloRecord of arofloData) {
-            if (arofloRecord.location === record.location) {
+            if (record.location?.includes(arofloRecord.location!)) {
               el.activity = "job";
               el.address.aroflo = arofloRecord.location;
               el.arrived.aroflo = this.formatAMPM(

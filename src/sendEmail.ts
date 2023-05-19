@@ -52,7 +52,7 @@ export const handler = async (event: any) => {
 
     const users = await arofloRepository.getUsers();
 
-    const startDate = new Date();
+    const startDate = new Date("2023-05-02");
     startDate.setHours(0);
     startDate.setMinutes(0);
     startDate.setSeconds(0);
@@ -95,7 +95,9 @@ export const handler = async (event: any) => {
     const emailParams: Mail.Options = {
       from: process.env.SOURCE_EMAIL,
       to: process.env.SEND_TO,
-      subject: `Report for ${new Date().getUTCFullYear()}/${new Date().getUTCMonth()}/${new Date().getUTCDate()}`,
+      subject: `Report for ${new Date().getUTCFullYear()}/${
+        new Date().getUTCMonth() + 1
+      }/${new Date().getUTCDate()}`,
       attachments,
     };
 

@@ -54,19 +54,23 @@ export default class XLSXParser {
     sheets.forEach((sheet: any) => {
       if (sheet.A1.v === "Object:") {
         if (parsed.length !== 0) {
-          userData = {} as ParsedXLSX;
+          userData = {} as any;
         }
-        userData.records = [] as NewEmailDataModel[];
-        userData.userName = sheet.B1.v;
+        userData.userName = sheet.B1.v.toLowerCase();
 
         const [user] = drivers.filter((u: any) => {
-          return u.customfields[0].value === userData.userName;
+          return u.customfields[0].value.toLowerCase() === userData.userName;
         });
 
-        if (user) userData.userId = user.customfields[0].fieldid;
+        userData.records = [] as any[];
+
         userData.startDate = sheet.B2.v.split(" ")[0].replace(/-/g, "/");
         userData.endDate = sheet.B2.v.split(" ")[3].replace(/-/g, "/");
-        parsed.push(userData);
+
+        if (user) {
+          userData.userId = user.userid;
+          parsed.push(userData);
+        }
       }
 
       if (sheet.A1.v === "Status") {
