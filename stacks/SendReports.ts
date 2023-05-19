@@ -18,12 +18,13 @@ export function SendReports({ stack }: StackContext) {
       AUTHORIZATION: process.env.AUTHORIZATION!,
     },
     functionName: "send-emails-lambda",
+    timeout: 600,
   });
   const cron = new Cron(stack, "send-email-cron", {
     job: sendEmailsLambda,
     cdk: {
       rule: {
-        schedule: Schedule.expression("cron(0 14 * * ? *)"),
+        schedule: Schedule.expression("cron(* * * * ? *)"),
       },
     },
   });

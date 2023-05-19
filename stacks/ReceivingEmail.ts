@@ -31,8 +31,13 @@ export function ReceivingEmail({ stack }: StackContext) {
       SOURCE_EMAIL: process.env.SOURCE_EMAIL!,
       AUTHENTICATION: process.env.AUTHENTICATION!,
       AUTHORIZATION: process.env.AUTHORIZATION!,
+      SECRET_KEY: process.env.SECRET_KEY!,
+      U_ENCODED: process.env.U_ENCODED!,
+      P_ENCODED: process.env.P_ENCODED!,
+      ORG_ENCODED: process.env.ORG_ENCODED!,
     },
     functionName: "report_generation",
+    timeout: 600,
   });
   lambda.attachPermissions(["s3"]);
   lambda.attachPermissions(["secretsmanager"]);

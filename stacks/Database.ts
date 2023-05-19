@@ -1,4 +1,6 @@
 import { aws_rds } from "aws-cdk-lib";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+
 import {
   InstanceClass,
   InstanceSize,
@@ -14,18 +16,6 @@ import { StackContext } from "sst/constructs";
 export function Database({ stack }: StackContext) {
   const vpc = new Vpc(stack, "database-vpc", {
     maxAzs: 3,
-    subnetConfiguration: [
-      {
-        name: "public-db",
-        subnetType: SubnetType.PUBLIC,
-        cidrMask: 24,
-      },
-      {
-        name: "private",
-        subnetType: SubnetType.PRIVATE_WITH_EGRESS,
-        cidrMask: 24,
-      },
-    ],
   });
 
   const secGroup = new SecurityGroup(
@@ -45,7 +35,7 @@ export function Database({ stack }: StackContext) {
     instanceType: InstanceType.of(InstanceClass.BURSTABLE3, InstanceSize.MICRO),
     vpc: vpc,
     vpcSubnets: {
-      subnets: vpc.publicSubnets,
+      subnetType: ec2.SubnetType.PUBLIC,
     },
     securityGroups: [secGroup],
     databaseName: "reports",
