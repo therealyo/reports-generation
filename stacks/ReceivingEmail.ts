@@ -8,24 +8,24 @@ import { ReportGeneration } from "./PDFGeneration";
 import iam from "aws-cdk-lib/aws-iam";
 
 export function ReceivingEmail({ stack }: StackContext) {
-  const { vpc, secGroup, db } = use(Database);
+  // const { vpc, secGroup, db } = use(Database);
   const { pdfGeneration } = use(ReportGeneration);
 
-  const bucket = new s3.Bucket(stack, "ReportsBucket", {
+  const bucket = new s3.Bucket(stack, "ReportsBucket-test", {
     bucketName: process.env.BUCKET_NAME,
   });
 
-  const lambda = new Function(stack, "bucket-handler", {
+  const lambda = new Function(stack, "bucket-handler-test", {
     handler: "src/parseEmail.handler",
-    vpc,
-    securityGroups: [secGroup],
+    // vpc,
+    // securityGroups: [secGroup],
     environment: {
       BUCKET_NAME: bucket.bucketName,
       ACCESS_KEY: process.env.ACCESS_KEY!,
       SECRET_ACCESS_KEY: process.env.SECRET_ACCESS_KEY!,
-      DATABASE_SECRET: db.secret?.secretName!,
-      DATABASE_PORT: db.dbInstanceEndpointPort,
-      DATABASE_HOST: db.dbInstanceEndpointAddress,
+      // DATABASE_SECRET: db.secret?.secretName!,
+      // DATABASE_PORT: db.dbInstanceEndpointPort,
+      // DATABASE_HOST: db.dbInstanceEndpointAddress,
       PDF_LAMBDA_NAME: pdfGeneration.functionName,
       SEND_TO: process.env.SEND_TO!,
       SOURCE_EMAIL: process.env.SOURCE_EMAIL!,
@@ -35,8 +35,13 @@ export function ReceivingEmail({ stack }: StackContext) {
       U_ENCODED: process.env.U_ENCODED!,
       P_ENCODED: process.env.P_ENCODED!,
       ORG_ENCODED: process.env.ORG_ENCODED!,
+      DB_USERNAME: process.env.DB_USERNAME!,
+      DB_PASSWORD: process.env.DB_PASSWORD!,
+      DB_HOST: process.env.DB_HOST!,
+      DB_PORT: process.env.DB_PORT!,
+      DB_NAME: process.env.DB_NAME!,
     },
-    functionName: "report_generation",
+    functionName: "report-receiving",
     timeout: 600,
   });
   lambda.attachPermissions(["s3"]);
@@ -58,7 +63,7 @@ export function ReceivingEmail({ stack }: StackContext) {
 
   lambda.addEventSource(s3PutEventSource);
 
-  const reactToReportEmail = new ReceiptRuleSet(stack, "email rule", {
+  const reactToReportEmail = new ReceiptRuleSet(stack, "email rule test", {
     rules: [
       {
         recipients: [process.env.DOMAIN_NAME!],

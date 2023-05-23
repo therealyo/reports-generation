@@ -4,7 +4,7 @@ import { ReceivingEmail } from "./ReceivingEmail";
 
 export function ReportGeneration({ stack }: StackContext) {
   // const { mainLambda } = use(ReceivingEmail);
-  const pdfGeneration = new Function(stack, "pdf-generation", {
+  const pdfGeneration = new Function(stack, "pdf-generation-test", {
     handler: "src/pdfGeneration.handler",
     layers: [
       lambda.LayerVersion.fromLayerVersionArn(
@@ -17,7 +17,7 @@ export function ReportGeneration({ stack }: StackContext) {
       install: ["@sparticuz/chromium", "puppeteer-core"],
     },
     runtime: "nodejs16.x",
-    functionName: "pdf-generation-from-html",
+    functionName: "pdf-generation-from-html-test",
   });
 
   return {

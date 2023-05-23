@@ -14,22 +14,22 @@ import {
 import { StackContext } from "sst/constructs";
 
 export function Database({ stack }: StackContext) {
-  const vpc = new Vpc(stack, "database-vpc", {
+  const vpc = new Vpc(stack, "database-vpc-test", {
     maxAzs: 3,
   });
 
   const secGroup = new SecurityGroup(
     stack,
-    "allow_database_connection_from_internet",
+    "allow_database_connection_from_internet-test",
     {
       vpc: vpc,
     }
   );
   secGroup.addIngressRule(Peer.ipv4("0.0.0.0/0"), Port.tcp(5432));
 
-  const db = new aws_rds.DatabaseInstance(stack, "reports-database", {
+  const db = new aws_rds.DatabaseInstance(stack, "reports-database-test", {
     engine: aws_rds.DatabaseInstanceEngine.postgres({
-      version: aws_rds.PostgresEngineVersion.VER_14_1,
+      version: aws_rds.PostgresEngineVersion.VER_14_2,
     }),
     publiclyAccessible: true,
     instanceType: InstanceType.of(InstanceClass.BURSTABLE3, InstanceSize.MICRO),
@@ -42,6 +42,7 @@ export function Database({ stack }: StackContext) {
     storageEncrypted: false,
   });
   db.connections.allowDefaultPortFromAnyIpv4();
+  console.log(db.secret!.secretName);
 
   return {
     db,

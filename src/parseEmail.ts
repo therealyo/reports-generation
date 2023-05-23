@@ -20,21 +20,21 @@ export const handler = async (event: S3Event) => {
       region: "us-east-1",
     });
 
-    const secrets = await secretsManager.send(
-      new GetSecretValueCommand({
-        SecretId: process.env.DATABASE_SECRET,
-        VersionStage: "AWSCURRENT",
-      })
-    );
+    // const secrets = await secretsManager.send(
+    //   new GetSecretValueCommand({
+    //     SecretId: process.env.DATABASE_SECRET,
+    //     VersionStage: "AWSCURRENT",
+    //   })
+    // );
 
-    const secretValue = JSON.parse(secrets.SecretString!);
+    // const secretValue = JSON.parse(secrets.SecretString!);
     const pool = new Pool({
-      connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
+      connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
     });
     const db = drizzle(pool);
 
     const client = new S3Client({
-      region: "us-east-1",
+      region: "us-west-2",
       credentials: {
         accessKeyId: process.env.ACCESS_KEY!,
         secretAccessKey: process.env.SECRET_ACCESS_KEY!,

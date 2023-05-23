@@ -33,7 +33,7 @@ class ReportGenerator {
     private arofloRepository: ArofloRepository,
     private emailDataRepository: EmailDataRepository
   ) {
-    this.lambda = new AWS.Lambda({ region: "us-east-1" });
+    this.lambda = new AWS.Lambda({ region: "us-west-2" });
   }
 
   public formatAMPM = (date: Date) => {

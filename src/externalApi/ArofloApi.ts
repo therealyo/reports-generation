@@ -4,6 +4,7 @@ import axios, { AxiosInstance } from "axios";
 import { NewArofloModel } from "@/database/ArofloDataTable";
 import { mockedSchedules } from "@/utils/schedulesMock";
 import { HmacSHA512 } from "crypto-js";
+import { tasks } from "@/utils/tasksMock";
 
 class ArofloApi {
   public readonly instance: AxiosInstance;
@@ -17,10 +18,7 @@ class ArofloApi {
     });
   }
 
-  private getArofloAuth = (
-    requestType: "GET" | "POST",
-    queryString: string
-  ) => {
+  public getArofloAuth = (requestType: "GET" | "POST", queryString: string) => {
     const date = new Date().toISOString();
     const urlPath = "";
 
@@ -82,33 +80,34 @@ class ArofloApi {
   };
 
   public getTasks = async () => {
-    let page = 65;
-    const tasks = [] as any;
-    while (true) {
-      // console.log("PAGE: ", page);
-      const params = [
-        "zone=" + encodeURIComponent("tasks"),
-        "where=" + encodeURIComponent("and|linkprocessed|=|false"),
-        "page=" + encodeURIComponent(`${page}`),
-      ];
+    // let page = 65;
+    // const tasks = [] as any;
+    // while (true) {
+    //   // console.log("PAGE: ", page);
+    //   const params = [
+    //     "zone=" + encodeURIComponent("tasks"),
+    //     "where=" + encodeURIComponent("and|linkprocessed|=|false"),
+    //     "page=" + encodeURIComponent(`${page}`),
+    //   ];
 
-      const queryString = params.join("&");
-      const auth = this.getArofloAuth("GET", queryString);
-      const { data } = await this.instance.get(`?${queryString}`, {
-        headers: {
-          Accept: auth.accept,
-          Authorization: auth.Authorization,
-          afdatetimeutc: auth.timestamp,
-          Authentication: `HMAC ${auth.af_hmac_signature}`,
-        },
-      });
-      // console.log(data.zoneresponse.tasks.length);
-      if (!data.zoneresponse.tasks.length) break;
+    //   const queryString = params.join("&");
+    //   const auth = this.getArofloAuth("GET", queryString);
+    //   const { data } = await this.instance.get(`?${queryString}`, {
+    //     headers: {
+    //       Accept: auth.accept,
+    //       Authorization: auth.Authorization,
+    //       afdatetimeutc: auth.timestamp,
+    //       Authentication: `HMAC ${auth.af_hmac_signature}`,
+    //     },
+    //   });
+    //   // console.log(data.zoneresponse.tasks.length);
+    //   if (!data.zoneresponse.tasks.length) break;
 
-      tasks.push(...data.zoneresponse.tasks);
-      page++;
-    }
+    //   tasks.push(...data.zoneresponse.tasks);
+    //   page++;
+    // }
 
+    // return tasks;
     return tasks;
   };
 
@@ -136,7 +135,9 @@ class ArofloApi {
           Authentication: `HMAC ${auth.af_hmac_signature}`,
         },
       });
+
       const taskSchedules = arofloSchedules.data.zoneresponse.schedules;
+
       if (!taskSchedules.length) break;
 
       const filtered = taskSchedules.filter(
