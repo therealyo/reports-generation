@@ -13,6 +13,10 @@ import {
 import { emailDataTable } from "./database/EmailDataTable";
 import ArofloApi from "./externalApi/ArofloApi";
 import XLSXParser from "./utils/XLSXParser";
+import ReportGenerator from "./utils/ReportGenerator";
+import ArofloRepository from "./repositories/ArofloRepository";
+import EmailDataRepository from "./repositories/EmailDataRepository";
+import Lambda from "aws-sdk/clients/lambda";
 
 export const handler = async (event: S3Event) => {
   try {
@@ -40,6 +44,12 @@ export const handler = async (event: S3Event) => {
         secretAccessKey: process.env.SECRET_ACCESS_KEY!,
       },
     });
+
+    // const aroflo = new ArofloRepository(db)
+    // const email = new EmailDataRepository(db)
+    // const reportGenerator = new ReportGenerator(aroflo, email)
+
+    const lambda = new AWS.Lambda({ region: "us-west-2" });
 
     const arofloApi = new ArofloApi();
     const xlsxParser = new XLSXParser(arofloApi);
@@ -75,6 +85,12 @@ export const handler = async (event: S3Event) => {
           .values(schedules)
           .onConflictDoNothing()
           .execute();
+
+        const params: Lambda.Types.InvocationRequest = {
+          FunctionName: process.env.PDF_LAMBDA_NAME!,
+        };
+
+        await lambda.invoke(params).promise();
       })
     );
   } catch (err) {

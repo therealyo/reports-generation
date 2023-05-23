@@ -6,10 +6,12 @@ import * as actions from "aws-cdk-lib/aws-ses-actions";
 import { Database } from "./Database";
 import { ReportGeneration } from "./PDFGeneration";
 import iam from "aws-cdk-lib/aws-iam";
+import { SendReports } from "./SendReports";
 
 export function ReceivingEmail({ stack }: StackContext) {
   // const { vpc, secGroup, db } = use(Database);
   const { pdfGeneration } = use(ReportGeneration);
+  const { sendEmailsLambda } = use(SendReports);
 
   const bucket = new s3.Bucket(stack, "ReportsBucket-test", {
     bucketName: process.env.BUCKET_NAME,
@@ -26,6 +28,7 @@ export function ReceivingEmail({ stack }: StackContext) {
       // DATABASE_SECRET: db.secret?.secretName!,
       // DATABASE_PORT: db.dbInstanceEndpointPort,
       // DATABASE_HOST: db.dbInstanceEndpointAddress,
+      EMAIL_LAMBDA_NAME: sendEmailsLambda.functionName,
       PDF_LAMBDA_NAME: pdfGeneration.functionName,
       SEND_TO: process.env.SEND_TO!,
       SOURCE_EMAIL: process.env.SOURCE_EMAIL!,

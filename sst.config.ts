@@ -18,7 +18,7 @@ export default {
   stacks(app) {
     // app.stack(Database);
     app.stack(ReportGeneration);
-    app.stack(ReceivingEmail);
     app.stack(SendReports);
+    app.stack(ReceivingEmail);
   },
 } satisfies SSTConfig;
