@@ -17,6 +17,7 @@ import ReportGenerator from "./utils/ReportGenerator";
 import ArofloRepository from "./repositories/ArofloRepository";
 import EmailDataRepository from "./repositories/EmailDataRepository";
 import Lambda from "aws-sdk/clients/lambda";
+import AWS from "aws-sdk";
 
 export const handler = async (event: S3Event) => {
   try {

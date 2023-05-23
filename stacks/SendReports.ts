@@ -48,5 +48,6 @@ export function SendReports({ stack }: StackContext) {
 
   return {
     cron,
+    sendEmailsLambda,
   };
 }
