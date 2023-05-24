@@ -10,13 +10,13 @@ config();
 export default {
   config(_input) {
     return {
-      profile: "samuel",
-      name: "report-generation-test",
-      region: "us-west-2",
+      // profile: "samuel",
+      name: "report-generation",
+      region: "us-east-1",
     };
   },
   stacks(app) {
-    // app.stack(Database);
+    app.stack(Database);
     app.stack(ReportGeneration);
     app.stack(SendReports);
     app.stack(ReceivingEmail);

@@ -20,16 +20,16 @@ import {
 
 export const handler = async (event: any) => {
   try {
-    // const secretsManager = new SecretsManagerClient({
-    //   region: "us-east-1",
-    // });
+    const secretsManager = new SecretsManagerClient({
+      region: "us-east-1",
+    });
 
-    // const secrets = await secretsManager.send(
-    //   new GetSecretValueCommand({
-    //     SecretId: process.env.DATABASE_SECRET,
-    //     VersionStage: "AWSCURRENT",
-    //   })
-    // );
+    const secrets = await secretsManager.send(
+      new GetSecretValueCommand({
+        SecretId: process.env.DATABASE_SECRET,
+        VersionStage: "AWSCURRENT",
+      })
+    );
 
     const transporter = nodemailer.createTransport({
       SES: new AWS.SES({
@@ -37,13 +37,13 @@ export const handler = async (event: any) => {
       }),
     });
 
-    // const secretValue = JSON.parse(secrets.SecretString!);
-    const pool = new Pool({
-      connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-    });
+    const secretValue = JSON.parse(secrets.SecretString!);
     // const pool = new Pool({
-    //   connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
+    //   connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
     // });
+    const pool = new Pool({
+      connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
+    });
     const db = drizzle(pool);
 
     const arofloRepository = new ArofloRepository(db);
@@ -77,9 +77,9 @@ export const handler = async (event: any) => {
       })
     );
 
+    const html = generateReportHTML(reports);
     const attachments = [] as Mail.Attachment[];
 
-    const html = generateReportHTML(reports);
     attachments.push({
       filename: `Report for ${new Date().getUTCFullYear()}/${
         new Date().getUTCMonth() + 1

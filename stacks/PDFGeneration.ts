@@ -1,10 +1,8 @@
-import { StackContext, Api, Function, use } from "sst/constructs";
+import { StackContext, Function } from "sst/constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import { ReceivingEmail } from "./ReceivingEmail";
 
 export function ReportGeneration({ stack }: StackContext) {
-  // const { mainLambda } = use(ReceivingEmail);
-  const pdfGeneration = new Function(stack, "pdf-generation-test", {
+  const pdfGeneration = new Function(stack, "pdf-generation-lambda", {
     handler: "src/pdfGeneration.handler",
     layers: [
       lambda.LayerVersion.fromLayerVersionArn(

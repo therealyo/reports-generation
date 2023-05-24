@@ -9,25 +9,23 @@ import iam from "aws-cdk-lib/aws-iam";
 import { SendReports } from "./SendReports";
 
 export function ReceivingEmail({ stack }: StackContext) {
-  // const { vpc, secGroup, db } = use(Database);
+  const { db } = use(Database);
   const { pdfGeneration } = use(ReportGeneration);
   const { sendEmailsLambda } = use(SendReports);
 
-  const bucket = new s3.Bucket(stack, "ReportsBucket-test", {
+  const bucket = new s3.Bucket(stack, "reports-bucket", {
     bucketName: process.env.BUCKET_NAME,
   });
 
-  const lambda = new Function(stack, "bucket-handler-test", {
+  const lambda = new Function(stack, "email-receive-handler", {
     handler: "src/parseEmail.handler",
-    // vpc,
-    // securityGroups: [secGroup],
     environment: {
       BUCKET_NAME: bucket.bucketName,
       ACCESS_KEY: process.env.ACCESS_KEY!,
       SECRET_ACCESS_KEY: process.env.SECRET_ACCESS_KEY!,
-      // DATABASE_SECRET: db.secret?.secretName!,
-      // DATABASE_PORT: db.dbInstanceEndpointPort,
-      // DATABASE_HOST: db.dbInstanceEndpointAddress,
+      DATABASE_SECRET: db.secret?.secretName!,
+      DATABASE_PORT: db.dbInstanceEndpointPort,
+      DATABASE_HOST: db.dbInstanceEndpointAddress,
       EMAIL_LAMBDA_NAME: sendEmailsLambda.functionName,
       PDF_LAMBDA_NAME: pdfGeneration.functionName,
       SEND_TO: process.env.SEND_TO!,
@@ -50,7 +48,7 @@ export function ReceivingEmail({ stack }: StackContext) {
   lambda.attachPermissions(["s3"]);
   lambda.attachPermissions(["secretsmanager"]);
   pdfGeneration.grantInvoke(lambda);
-
+  sendEmailsLambda.grantInvoke(lambda);
   lambda.addToRolePolicy(
     new iam.PolicyStatement({
       actions: ["ses:SendEmail", "SES:SendRawEmail"],
@@ -58,15 +56,14 @@ export function ReceivingEmail({ stack }: StackContext) {
       effect: iam.Effect.ALLOW,
     })
   );
-  // lambda.attachPermissions(["ses"])
 
   const s3PutEventSource = new lambdaEventSources.S3EventSource(bucket, {
-    events: [s3.EventType.OBJECT_CREATED_PUT],
+    events: [s3.EventType.OBJECT_CREATED_PUT, s3.EventType.OBJECT_CREATED_POST],
   });
 
   lambda.addEventSource(s3PutEventSource);
 
-  const reactToReportEmail = new ReceiptRuleSet(stack, "email rule test", {
+  const reactToReportEmail = new ReceiptRuleSet(stack, "receieve-email-rule", {
     rules: [
       {
         recipients: [process.env.DOMAIN_NAME!],

@@ -15,34 +15,48 @@ import { StackContext } from "sst/constructs";
 
 export function Database({ stack }: StackContext) {
   const vpc = new Vpc(stack, "database-vpc-test", {
-    maxAzs: 3,
+    cidr: "10.0.0.0/16",
+    maxAzs: 2,
+    subnetConfiguration: [
+      {
+        cidrMask: 24,
+        name: "PublicSubnet",
+        subnetType: ec2.SubnetType.PUBLIC,
+      },
+    ],
   });
 
   const secGroup = new SecurityGroup(
     stack,
     "allow_database_connection_from_internet-test",
     {
-      vpc: vpc,
+      vpc,
+      securityGroupName: "samuel-sec-group",
     }
   );
-  secGroup.addIngressRule(Peer.ipv4("0.0.0.0/0"), Port.tcp(5432));
 
-  const db = new aws_rds.DatabaseInstance(stack, "reports-database-test", {
+  secGroup.addEgressRule(ec2.Peer.anyIpv4(), ec2.Port.allTraffic());
+  secGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(5432));
+
+  const db = new aws_rds.DatabaseInstance(stack, "reports-database", {
     engine: aws_rds.DatabaseInstanceEngine.postgres({
       version: aws_rds.PostgresEngineVersion.VER_14_2,
     }),
-    publiclyAccessible: true,
-    instanceType: InstanceType.of(InstanceClass.BURSTABLE3, InstanceSize.MICRO),
-    vpc: vpc,
+    vpc,
+    securityGroups: [secGroup],
+    instanceType: ec2.InstanceType.of(
+      ec2.InstanceClass.BURSTABLE3,
+      ec2.InstanceSize.MICRO
+    ),
+    allocatedStorage: 100,
+    storageType: aws_rds.StorageType.GP2,
+    databaseName: "reports",
     vpcSubnets: {
       subnetType: ec2.SubnetType.PUBLIC,
     },
-    securityGroups: [secGroup],
-    databaseName: "reports",
-    storageEncrypted: false,
+    publiclyAccessible: true,
   });
   db.connections.allowDefaultPortFromAnyIpv4();
-  console.log(db.secret!.secretName);
 
   return {
     db,

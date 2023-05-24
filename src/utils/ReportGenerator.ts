@@ -2,10 +2,17 @@ import { Status, statusEnum } from "@/database/EmailDataTable";
 import ArofloRepository from "@/repositories/ArofloRepository";
 import EmailDataRepository from "@/repositories/EmailDataRepository";
 import AWS, { Lambda } from "aws-sdk";
+import axios from "axios";
+import haversine from "haversine";
 
 export interface ReportElement {
   name: string;
   activity: "job" | "travel" | "other";
+  jobNumber?: number;
+  jobSummary?: {
+    timeUsed: string;
+    inTime: string;
+  };
   address: {
     aroflo: string | null;
     actual: string | null;
@@ -18,12 +25,16 @@ export interface ReportElement {
     aroflo: string | null;
     actual: string | null;
   };
-  time: string;
+  time: {
+    aroflo: string | null;
+    actual: string | null;
+  };
   description: string;
 }
 
 export interface Report {
   name: string;
+  date: string;
   elements: ReportElement[];
 }
 
@@ -33,7 +44,7 @@ class ReportGenerator {
     private arofloRepository: ArofloRepository,
     private emailDataRepository: EmailDataRepository
   ) {
-    this.lambda = new AWS.Lambda({ region: "us-west-2" });
+    this.lambda = new AWS.Lambda({ region: "us-east-1" });
   }
 
   public formatAMPM = (date: Date) => {
@@ -45,6 +56,42 @@ class ReportGenerator {
     let min = minutes < 10 ? "0" + minutes : minutes;
     let strTime = hours + ":" + min + " " + ampm;
     return strTime;
+  };
+
+  private getHoursMinutesSeconds = (timestamp: number) => {
+    const diffInMilliseconds = Math.abs(timestamp);
+
+    const hours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+    const minutes = Math.floor(
+      (diffInMilliseconds % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor((diffInMilliseconds % (1000 * 60)) / 1000);
+
+    return { hours, minutes, seconds };
+  };
+
+  private compareLocations = async (loc1: string, loc2: string) => {
+    const { data: report } = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc1}&key=${process.env.GOOGLE_API_KEY}`
+    );
+
+    const { data: aroflo } = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc2}&key=${process.env.GOOGLE_API_KEY}`
+    );
+    const resultAroflo = aroflo.results[0];
+    const resultReport = report.results[0];
+
+    return haversine(
+      resultReport.geometry.location,
+      resultAroflo.geometry.location,
+      {
+        threshold: 0.2,
+        unit: "km",
+        format: "{lat,lng}",
+      }
+    );
+
+    // return true
   };
 
   public generateJSONTable = async (
@@ -68,9 +115,14 @@ class ReportGenerator {
     if (actualData.length !== 0) {
       const report = {
         name: actualData[0].userName!,
+        date: new Date(actualData[0].startDate!)
+          .toISOString()
+          .split("T")[0]
+          .replace(/-/g, "/"),
         elements: [] as ReportElement[],
       } as Report;
 
+      let jobNumber = 0;
       for (let record of actualData) {
         let el = {
           activity: "other",
@@ -86,14 +138,49 @@ class ReportGenerator {
             aroflo: null,
             actual: this.formatAMPM(new Date(record.endDate!)),
           },
-          time: record.timeSpent!,
+          time: {
+            aroflo: null,
+            actual: record.timeSpent!,
+          },
           description: "",
         } as ReportElement;
 
-        if (record.status === Status.STOPPED) {
+        if (
+          record.status === Status.STOPPED
+        ) {
           for (let arofloRecord of arofloData) {
-            if (record.location?.includes(arofloRecord.location!)) {
+            // let jobNumber = 0;
+            if (
+              await this.compareLocations(
+                record.location!,
+                arofloRecord.location!
+              )
+            ) {
+              jobNumber++;
               el.activity = "job";
+              el.jobNumber = jobNumber;
+              const inTime = this.getHoursMinutesSeconds(
+                record.startDate! - arofloRecord.startDate!
+              );
+              const timeUsed = this.getHoursMinutesSeconds(
+                record.endDate! -
+                  record.startDate! -
+                  (arofloRecord.endDate! - arofloRecord.startDate!)
+              );
+
+              el.jobSummary = {
+                inTime:
+                  record.startDate! - arofloRecord.startDate! > 0
+                    ? `Late to job: ${inTime.hours} h ${inTime.minutes} min ${inTime.seconds} s`
+                    : `Earlier to job: ${inTime.hours} h ${inTime.minutes} min ${inTime.seconds} s`,
+                timeUsed:
+                  record.endDate! -
+                    record.startDate! -
+                    (arofloRecord.endDate! - arofloRecord.startDate!) >
+                  0
+                    ? `Under time: ${timeUsed.hours} h ${timeUsed.minutes} min ${timeUsed.seconds} s`
+                    : `Overtime: ${timeUsed.hours} h ${timeUsed.minutes} min ${timeUsed.seconds} s`,
+              };
               el.address.aroflo = arofloRecord.location;
               el.arrived.aroflo = this.formatAMPM(
                 new Date(arofloRecord.startDate!)
@@ -101,6 +188,13 @@ class ReportGenerator {
               el.departed.aroflo = this.formatAMPM(
                 new Date(arofloRecord.endDate!)
               );
+              const arofloTime = this.getHoursMinutesSeconds(
+                arofloRecord.endDate! - arofloRecord.startDate!
+              );
+              el.time.aroflo =
+                arofloTime.hours == 0
+                  ? `${arofloTime.minutes} min ${arofloTime.seconds} s`
+                  : `${arofloTime.hours} h ${arofloTime.minutes} min ${arofloTime.seconds} s`;
               el.description = arofloRecord.description!;
               break;
             }

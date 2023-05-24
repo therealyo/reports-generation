@@ -27,7 +27,7 @@ const checkForNull = (value: any) => {
 
 export const generateHtmlFromJson = (data: Report) => {
   let html = `
-  <h1>${data.name}'s Report</h1>
+  <h1>${data.name}'s report for ${data.date}</h1>
   <table>
   <thead>
   <tr>

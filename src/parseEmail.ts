@@ -25,21 +25,24 @@ export const handler = async (event: S3Event) => {
       region: "us-east-1",
     });
 
-    // const secrets = await secretsManager.send(
-    //   new GetSecretValueCommand({
-    //     SecretId: process.env.DATABASE_SECRET,
-    //     VersionStage: "AWSCURRENT",
-    //   })
-    // );
+    const secrets = await secretsManager.send(
+      new GetSecretValueCommand({
+        SecretId: process.env.DATABASE_SECRET,
+        VersionStage: "AWSCURRENT",
+      })
+    );
 
-    // const secretValue = JSON.parse(secrets.SecretString!);
+    const secretValue = JSON.parse(secrets.SecretString!);
+    // const pool = new Pool({
+    //   connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+    // });
     const pool = new Pool({
-      connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+      connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
     });
     const db = drizzle(pool);
 
     const client = new S3Client({
-      region: "us-west-2",
+      region: "us-east-1",
       credentials: {
         accessKeyId: process.env.ACCESS_KEY!,
         secretAccessKey: process.env.SECRET_ACCESS_KEY!,
@@ -50,7 +53,7 @@ export const handler = async (event: S3Event) => {
     // const email = new EmailDataRepository(db)
     // const reportGenerator = new ReportGenerator(aroflo, email)
 
-    const lambda = new AWS.Lambda({ region: "us-west-2" });
+    const lambda = new AWS.Lambda({ region: "us-east-1" });
 
     const arofloApi = new ArofloApi();
     const xlsxParser = new XLSXParser(arofloApi);
@@ -78,9 +81,8 @@ export const handler = async (event: S3Event) => {
               .onConflictDoNothing()
               .execute();
         }
-        // // const tasks = await getTasks(emailData.date); // need further exploration of tasks api
+
         const schedules = await arofloApi.getSchedules(emailData[0].startDate);
-        // console.log(schedules);
         await db
           .insert(arofloTable)
           .values(schedules)
