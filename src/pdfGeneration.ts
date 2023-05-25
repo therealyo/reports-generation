@@ -20,8 +20,6 @@ export async function handler(event: any) {
     await page.setContent(html);
     const pdfFile = await page.pdf({
       printBackground: true,
-      // margin: { top: 30, bottom: 30 },
-      // width: 1300,
     });
 
     await browser.close();

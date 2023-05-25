@@ -1,4 +1,4 @@
-import { StackContext, use, Function, Cron } from "sst/constructs";
+import { StackContext, use, Function } from "sst/constructs";
 import { ReportGeneration } from "./PDFGeneration";
 import iam from "aws-cdk-lib/aws-iam";
 import { Database } from "./Database";
@@ -6,11 +6,12 @@ import { Database } from "./Database";
 export function SendReports({ stack }: StackContext) {
   const { pdfGeneration } = use(ReportGeneration);
   const { db } = use(Database);
-  const sendEmailsLambda = new Function(stack, "send-emails-lambda", {
+  const sendEmailsLambda = new Function(stack, "send-emails-handler", {
     handler: "src/sendEmail.handler",
     environment: {
       PDF_LAMBDA_NAME: pdfGeneration.functionName,
       DATABASE_SECRET: db.secret?.secretName!,
+      GOOGLE_API_KEY: process.env.GOOGLE_API_KEY!,
       SEND_TO: process.env.SEND_TO!,
       SOURCE_EMAIL: process.env.SOURCE_EMAIL!,
       AUTHENTICATION: process.env.AUTHENTICATION!,
@@ -21,19 +22,10 @@ export function SendReports({ stack }: StackContext) {
       DB_PORT: process.env.DB_PORT!,
       DB_NAME: process.env.DB_NAME!,
     },
-    functionName: "send-emails-lambda",
+    functionName: "send-emails",
     timeout: 600,
   });
-  // const cron = new Cron(stack, "send-email-cron-test", {
-  //   job: sendEmailsLambda,
-  //   cdk: {
-  //     rule: {
-  //       schedule: Schedule.expression("cron(0 2 * * ? *)"),
-  //     },
-  //   },
-  // });
 
-  // cron.attachPermissions(["lambda"]);
   sendEmailsLambda.addToRolePolicy(
     new iam.PolicyStatement({
       actions: ["ses:SendEmail", "SES:SendRawEmail"],
@@ -46,7 +38,6 @@ export function SendReports({ stack }: StackContext) {
   pdfGeneration.grantInvoke(sendEmailsLambda);
 
   return {
-    // cron,
     sendEmailsLambda,
   };
 }

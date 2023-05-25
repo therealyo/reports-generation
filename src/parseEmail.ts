@@ -13,16 +13,13 @@ import {
 import { emailDataTable } from "./database/EmailDataTable";
 import ArofloApi from "./externalApi/ArofloApi";
 import XLSXParser from "./utils/XLSXParser";
-import ReportGenerator from "./utils/ReportGenerator";
-import ArofloRepository from "./repositories/ArofloRepository";
-import EmailDataRepository from "./repositories/EmailDataRepository";
 import Lambda from "aws-sdk/clients/lambda";
 import AWS from "aws-sdk";
 
 export const handler = async (event: S3Event) => {
   try {
     const secretsManager = new SecretsManagerClient({
-      region: "us-east-1",
+      region: process.env.AWS_REGION,
     });
 
     const secrets = await secretsManager.send(
@@ -33,27 +30,20 @@ export const handler = async (event: S3Event) => {
     );
 
     const secretValue = JSON.parse(secrets.SecretString!);
-    // const pool = new Pool({
-    //   connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-    // });
     const pool = new Pool({
       connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
     });
     const db = drizzle(pool);
 
     const client = new S3Client({
-      region: "us-east-1",
+      region: process.env.AWS_REGION,
       credentials: {
         accessKeyId: process.env.ACCESS_KEY!,
         secretAccessKey: process.env.SECRET_ACCESS_KEY!,
       },
     });
 
-    // const aroflo = new ArofloRepository(db)
-    // const email = new EmailDataRepository(db)
-    // const reportGenerator = new ReportGenerator(aroflo, email)
-
-    const lambda = new AWS.Lambda({ region: "us-east-1" });
+    const lambda = new AWS.Lambda({ region: process.env.AWS_REGION });
 
     const arofloApi = new ArofloApi();
     const xlsxParser = new XLSXParser(arofloApi);
@@ -90,7 +80,10 @@ export const handler = async (event: S3Event) => {
           .execute();
 
         const params: Lambda.Types.InvocationRequest = {
-          FunctionName: process.env.PDF_LAMBDA_NAME!,
+          FunctionName: process.env.EMAIL_LAMBDA_NAME!,
+          Payload: JSON.stringify({
+            date: emailData[0].startDate.replace(/\//g, "-"),
+          }),
         };
 
         await lambda.invoke(params).promise();

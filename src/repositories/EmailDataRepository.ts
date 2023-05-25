@@ -1,5 +1,5 @@
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
-import { and, asc, eq, gte, lte } from "drizzle-orm/expressions";
+import { and, eq, gte, lte } from "drizzle-orm/expressions";
 
 import { emailDataTable } from "@/database/EmailDataTable";
 import { sql } from "drizzle-orm";
@@ -12,19 +12,25 @@ class EmailDataRepository {
     startDate: number,
     endDate: number
   ) => {
-    const results = await this.db
-      .select()
-      .from(emailDataTable)
-      .where(
-        and(
-          gte(emailDataTable.startDate, startDate),
-          lte(emailDataTable.endDate, endDate),
-          eq(emailDataTable.userId, userId),
-          sql`end_date - start_date > 360000`
+    const user_data = this.db.$with("user_data").as(
+      this.db
+        .select()
+        .from(emailDataTable)
+        .where(
+          and(
+            gte(emailDataTable.startDate, startDate),
+            lte(emailDataTable.endDate, endDate),
+            eq(emailDataTable.userId, userId)
+          )
         )
-      )
-      .orderBy(asc(emailDataTable.startDate))
-      .execute();
+    );
+    const results = await this.db
+      .with(user_data)
+      .select()
+      .from(user_data)
+      .where(
+        sql`status='Moving' OR (status='Stopped' AND end_date - start_date > 360000)`
+      );
 
     return results;
   };

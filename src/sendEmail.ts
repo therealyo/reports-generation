@@ -1,27 +1,27 @@
 import { Pool } from "pg";
+import AWS from "aws-sdk";
 import { drizzle } from "drizzle-orm/node-postgres";
 import Mail from "nodemailer/lib/mailer";
-
-import ArofloRepository from "./repositories/ArofloRepository";
-import EmailDataRepository from "./repositories/EmailDataRepository";
-import ReportGenerator, { Report } from "./utils/ReportGenerator";
-import { S3Event } from "aws-lambda";
-import AWS from "aws-sdk";
 import {
   SecretsManagerClient,
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
 import nodemailer from "nodemailer";
 
+import ArofloRepository from "./repositories/ArofloRepository";
+import EmailDataRepository from "./repositories/EmailDataRepository";
+import ReportGenerator, { Report } from "./utils/ReportGenerator";
+
 import {
   generateHtmlFromJson,
   generateReportHTML,
 } from "./utils/htmlGeneration";
 
-export const handler = async (event: any) => {
+export const handler = async (event: { date: string }) => {
   try {
+    const { date } = event;
     const secretsManager = new SecretsManagerClient({
-      region: "us-east-1",
+      region: process.env.AWS_REGION,
     });
 
     const secrets = await secretsManager.send(
@@ -38,9 +38,6 @@ export const handler = async (event: any) => {
     });
 
     const secretValue = JSON.parse(secrets.SecretString!);
-    // const pool = new Pool({
-    //   connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-    // });
     const pool = new Pool({
       connectionString: `postgres://${secretValue.username}:${secretValue.password}@${secretValue.host}:${secretValue.port}/${secretValue.dbname}`,
     });
@@ -55,7 +52,7 @@ export const handler = async (event: any) => {
 
     const users = await arofloRepository.getUsers();
 
-    const startDate = new Date("2023-05-02");
+    const startDate = new Date(date);
     startDate.setHours(0);
     startDate.setMinutes(0);
     startDate.setSeconds(0);
@@ -78,22 +75,23 @@ export const handler = async (event: any) => {
     );
 
     const html = generateReportHTML(reports);
-    const attachments = [] as Mail.Attachment[];
+    const pdf = await reportGenerator.generatePDFfromHTML(html);
 
-    attachments.push({
+    const htmlAttachment = {
       filename: `Report for ${new Date().getUTCFullYear()}/${
         new Date().getUTCMonth() + 1
       }/${new Date().getUTCDate()}.html`,
       content: html,
-    });
+    };
 
-    const pdf = await reportGenerator.generatePDFfromHTML(html);
-    attachments.push({
+    const pdfAttachment = {
       filename: `Report for ${new Date().getUTCFullYear()}/${
         new Date().getUTCMonth() + 1
       }/${new Date().getUTCDate()}.pdf`,
       content: pdf,
-    });
+    };
+
+    const attachments = [htmlAttachment, pdfAttachment] as Mail.Attachment[];
 
     const emailParams: Mail.Options = {
       from: process.env.SOURCE_EMAIL,

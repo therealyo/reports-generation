@@ -44,7 +44,7 @@ class ReportGenerator {
     private arofloRepository: ArofloRepository,
     private emailDataRepository: EmailDataRepository
   ) {
-    this.lambda = new AWS.Lambda({ region: "us-east-1" });
+    this.lambda = new AWS.Lambda({ region: process.env.AWS_REGION });
   }
 
   public formatAMPM = (date: Date) => {
@@ -90,8 +90,6 @@ class ReportGenerator {
         format: "{lat,lng}",
       }
     );
-
-    // return true
   };
 
   public generateJSONTable = async (
@@ -145,9 +143,7 @@ class ReportGenerator {
           description: "",
         } as ReportElement;
 
-        if (
-          record.status === Status.STOPPED
-        ) {
+        if (record.status === Status.STOPPED) {
           for (let arofloRecord of arofloData) {
             // let jobNumber = 0;
             if (

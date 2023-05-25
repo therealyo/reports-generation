@@ -1,5 +1,5 @@
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
-import { and, asc, desc, eq, gte, lte, or } from "drizzle-orm/expressions";
+import { and, asc, eq, gte, lte } from "drizzle-orm/expressions";
 
 import { arofloTable } from "@/database/ArofloDataTable";
 

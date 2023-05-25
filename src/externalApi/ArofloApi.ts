@@ -1,15 +1,11 @@
-import fs from "fs";
-import crypto from "crypto";
-import axios, { AxiosInstance } from "axios";
-import { NewArofloModel } from "@/database/ArofloDataTable";
-import { mockedSchedules } from "@/utils/schedulesMock";
 import { HmacSHA512 } from "crypto-js";
-// import { tasks } from "@/utils/tasksMock";
+import axios, { AxiosInstance } from "axios";
+
+import { NewArofloModel } from "@/database/ArofloDataTable";
 
 class ArofloApi {
   public readonly instance: AxiosInstance;
   private readonly secret: string = process.env.SECRET_KEY!;
-  private readonly hostIp = process.env.HOST_IP;
   private readonly accept = "application/json";
   constructor() {
     this.instance = axios.create({
@@ -53,8 +49,6 @@ class ArofloApi {
   };
 
   public getUsers = async () => {
-    // // mocked id for testing
-    // return "JSc6UyZRTEwgCg==";
     let page = 1;
     const users = [] as any;
     try {
@@ -93,7 +87,6 @@ class ArofloApi {
     let page = 65;
     const tasks = [] as any;
     while (true) {
-      // console.log("PAGE: ", page);
       const params = [
         "zone=" + encodeURIComponent("tasks"),
         "where=" + encodeURIComponent("and|linkprocessed|=|false"),
@@ -111,7 +104,7 @@ class ArofloApi {
             Authentication: `HMAC ${auth.af_hmac_signature}`,
           },
         });
-        // console.log(data.zoneresponse.tasks.length);
+
         if (!data.zoneresponse.tasks.length) break;
 
         tasks.push(...data.zoneresponse.tasks);
@@ -120,16 +113,12 @@ class ArofloApi {
     }
 
     return tasks;
-    // return tasks;
   };
 
   public getSchedules = async (date: string) => {
     let page = 1;
     const arofloData = [] as NewArofloModel[];
     const tasks = await this.getTasks();
-    // const tasks = JSON.parse(
-    //   fs.readFileSync("tasksReponseArray.json").toString("utf-8")
-    // );
     while (true) {
       const params = [
         "zone=" + encodeURIComponent("schedules"),

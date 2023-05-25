@@ -1,4 +1,4 @@
-import { read, utils } from "xlsx";
+import { read } from "xlsx";
 
 import { NewEmailDataModel, Status } from "../database/EmailDataTable";
 import ArofloApi from "@/externalApi/ArofloApi";

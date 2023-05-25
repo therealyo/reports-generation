@@ -5,18 +5,19 @@ import { config } from "dotenv";
 import { Database } from "./stacks/Database";
 import { ReportGeneration } from "./stacks/PDFGeneration";
 import { SendReports } from "./stacks/SendReports";
+import { MigrationScript } from "./stacks/MigrationScript";
 config();
 
 export default {
   config(_input) {
     return {
-      // profile: "samuel",
       name: "report-generation",
-      region: "us-east-1",
+      region: process.env.AWS_REGION,
     };
   },
   stacks(app) {
     app.stack(Database);
+    app.stack(MigrationScript);
     app.stack(ReportGeneration);
     app.stack(SendReports);
     app.stack(ReceivingEmail);

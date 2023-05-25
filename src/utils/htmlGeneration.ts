@@ -1,4 +1,3 @@
-// import { ReportElement, Report } from "../../index";
 import { NewEmailDataModel } from "@/database/EmailDataTable";
 import { ReportElement, Report } from "./ReportGenerator";
 
@@ -49,13 +48,15 @@ export const generateHtmlFromJson = (data: Report) => {
     };
     if (obj.activity === "travel") {
       html += `<tr class="travel">
-                  <td class="centered">${obj.activity}</td>
+                  <td colspan="1" class="centered">${obj.activity}</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td colspan="2">${obj.time}</td>
-                  <td colspan="2">${obj.description}</td>
-                  </tr>`;
+                  <td colspan="1">${obj.time.aroflo || ""}</td>
+                  <td colspan="1">${obj.time.actual}</td>
+                  <td colspan="1">${obj.description}</td>
+                </tr>
+              `;
     } else if (
       checkIfAllValuesAreNull(obj.address) &&
       checkIfAllValuesAreNull(obj.arrived) &&
@@ -65,8 +66,8 @@ export const generateHtmlFromJson = (data: Report) => {
                   <td class="centered">${obj.activity}</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td colspan="2"></td>
-                  <td colspan="2">${obj.time}</td>
+                  <td colspan="1">${obj.time.aroflo || ""}</td>
+                  <td colspan="1">${obj.time.actual}</td>
                   <td colspan="2">${obj.description}</td>
                   </tr>`;
     } else if (
@@ -77,30 +78,48 @@ export const generateHtmlFromJson = (data: Report) => {
       if (obj.address.aroflo !== null) {
         html += `
           <tr class=${className(obj.activity)}>
-      <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
-      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
-      <td colspan="1" rowspan="1">${checkForNull(obj.address.aroflo)}</td>
-      <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
-      <td colspan="2" rowspan="2">${obj.description}</td>
-  </tr>
-  <tr class=${className(obj.activity)}>
-      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
-      <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
-  </tr>`;
-      } else {
-        html += `
+              <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
+              <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+              <td colspan="1" rowspan="1">${checkForNull(
+                obj.address.aroflo
+              )}</td>
+              <td colspan="2" rowspan="2"></td>
+              <td colspan="2" rowspan="2"></td>
+              <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+              <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
+              <td colspan="2" rowspan="2">${obj.description}</td>
+          </tr>
           <tr class=${className(obj.activity)}>
-      <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
-      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
-      <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
-      <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
-      <td colspan="2" rowspan="2">${obj.description}</td>
-  </tr>
-  <tr class=${className(obj.activity)}></tr>`;
+              <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+              <td colspan="1" rowspan="1">${checkForNull(
+                obj.address.actual
+              )}</td>
+              <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+              <td colspan="1" rowspan="1">${obj.time.actual}</td>
+          </tr>`;
+      } else {
+        //       html += `
+        //         <tr class=${className(obj.activity)}>
+        //     <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
+        //     <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+        //     <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
+        //     <td colspan="2" rowspan="2"></td>
+        //     <td colspan="2" rowspan="2"></td>
+        //     <td colspan="2" rowspan="2">${obj.time}</td>
+        //     <td colspan="2" rowspan="2">${obj.description}</td>
+        // </tr>
+        // <tr class=${className(obj.activity)}></tr>`;
+        html += `
+        <tr class=${className(obj.activity)}>
+          <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
+          <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+          <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
+          <td colspan="2" rowspan="2"></td>
+          <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+          <td colspan="1" rowspan="1">${obj.time.actual}</td>
+          <td colspan="2" rowspan="2">${obj.description}</td>
+        </tr>
+        <tr class=${className(obj.activity)}></tr>`;
       }
     } else if (
       hasNotNullValues(obj.address) &&
@@ -116,7 +135,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
@@ -124,6 +144,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -135,7 +157,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
@@ -149,14 +172,20 @@ export const generateHtmlFromJson = (data: Report) => {
       if (obj.address.aroflo !== null) {
         html += `
           <tr class=${className(obj.activity)}>
-      <td class="centered" colspan="1" rowspan="2">${obj.activity}</td>
+      <td class="centered" colspan="1" rowspan="2">
+        ${obj.activity} ${obj.jobNumber || ""}
+        <br />
+        ${obj.jobSummary?.timeUsed || ""}
+        ${obj.jobSummary?.inTime || ""}
+      </td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.address.aroflo)}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
@@ -166,6 +195,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -178,7 +209,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
@@ -198,7 +230,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
@@ -206,6 +239,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.address.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -217,7 +252,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
@@ -236,12 +272,15 @@ export const generateHtmlFromJson = (data: Report) => {
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -252,7 +291,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td colspan="2" rowspan="2"></td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
@@ -271,12 +311,15 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -287,7 +330,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="2" rowspan="2"></td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>
@@ -307,7 +351,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.aroflo)}</td>
       <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.aroflo)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Aroflo =</td>
+      <td colspan="1" rowspan="1">${obj.time.aroflo || ""}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}>
@@ -315,6 +360,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual = </td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual = </td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
   </tr>
           `;
       } else {
@@ -326,7 +373,8 @@ export const generateHtmlFromJson = (data: Report) => {
       <td colspan="1" rowspan="1">${checkForNull(obj.arrived.actual)}</td>
       <td class="values_name" colspan="1" rowspan="1">Actual =</td>
       <td colspan="1" rowspan="1">${checkForNull(obj.departed.actual)}</td>
-      <td colspan="2" rowspan="2">${obj.time}</td>
+      <td class="values_name" colspan="1" rowspan="1">Actual =</td>
+      <td colspan="1" rowspan="1">${obj.time.actual}</td>
       <td colspan="2" rowspan="2">${obj.description}</td>
   </tr>
   <tr class=${className(obj.activity)}></tr>

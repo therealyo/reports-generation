@@ -15,7 +15,7 @@ export function ReportGeneration({ stack }: StackContext) {
       install: ["@sparticuz/chromium", "puppeteer-core"],
     },
     runtime: "nodejs16.x",
-    functionName: "pdf-generation-from-html-test",
+    functionName: "generate-pdf-from-html",
   });
 
   return {

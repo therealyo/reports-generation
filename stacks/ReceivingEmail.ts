@@ -63,7 +63,7 @@ export function ReceivingEmail({ stack }: StackContext) {
 
   lambda.addEventSource(s3PutEventSource);
 
-  const reactToReportEmail = new ReceiptRuleSet(stack, "receieve-email-rule", {
+  const reactToReportEmail = new ReceiptRuleSet(stack, "receive-email-rule", {
     rules: [
       {
         recipients: [process.env.DOMAIN_NAME!],

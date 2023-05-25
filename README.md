@@ -48,6 +48,14 @@ npm run migrate-database
 
 ## ENVIRONMENT
 
+### `AWS_REGION`
+
+AWS region that you will deploy your stack to
+
+### `GOOGLE_API_KEY`
+
+Google api key for geoconing api (https://mapsplatform.google.com/pricing/)
+
 ### `LAMBDA_LAYER_ARN`
 
 ARN of created lambda layer
@@ -66,11 +74,11 @@ Email that will receive reports. Must be verified in AWS SES or belong to verifi
 
 ### `SOURCE_EMAIL`
 
-Email that will send reports. Must be verified in AWS SES or belong to verified domain name
+Email that will receive incoming user reports and then send generated pdf reports to SEND_TO email. Must be verified in AWS SES or belong to verified domain name
 
 ### `DOMAIN_NAME`
 
-Name of domain that you own. Must be verified in AWS SES
+Name of domain that is verified in SES. You will need to use email under this domain name to receive incoming . Must be verified in AWS SES
 
 ### `BUCKET_NAME`
 

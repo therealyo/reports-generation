@@ -1,20 +1,11 @@
 import { aws_rds } from "aws-cdk-lib";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
 
-import {
-  InstanceClass,
-  InstanceSize,
-  InstanceType,
-  Peer,
-  Port,
-  SecurityGroup,
-  SubnetType,
-  Vpc,
-} from "aws-cdk-lib/aws-ec2";
+import { SecurityGroup, Vpc } from "aws-cdk-lib/aws-ec2";
 import { StackContext } from "sst/constructs";
 
 export function Database({ stack }: StackContext) {
-  const vpc = new Vpc(stack, "database-vpc-test", {
+  const vpc = new Vpc(stack, "database-vpc", {
     cidr: "10.0.0.0/16",
     maxAzs: 2,
     subnetConfiguration: [
@@ -28,7 +19,7 @@ export function Database({ stack }: StackContext) {
 
   const secGroup = new SecurityGroup(
     stack,
-    "allow_database_connection_from_internet-test",
+    "allow_database_connection_from_internet",
     {
       vpc,
       securityGroupName: "samuel-sec-group",
