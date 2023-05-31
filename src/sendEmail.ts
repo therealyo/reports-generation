@@ -50,7 +50,7 @@ export const handler = async (event: { date: string }) => {
       emailDataRepository
     );
 
-    const users = await arofloRepository.getUsers();
+    const users = await emailDataRepository.getUsers();
 
     const startDate = new Date(date);
     startDate.setHours(0);

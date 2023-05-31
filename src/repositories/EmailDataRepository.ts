@@ -34,6 +34,22 @@ class EmailDataRepository {
 
     return results;
   };
+
+  public getUsers = async () => {
+    return await this.db
+      .select({ userId: emailDataTable.userId })
+      .from(emailDataTable)
+      .execute()
+      .then((users) => {
+        return [
+          ...new Set(
+            users.map((user) => {
+              return user.userId;
+            })
+          ),
+        ];
+      });
+  };
 }
 
 export default EmailDataRepository;
