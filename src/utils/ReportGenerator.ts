@@ -38,6 +38,11 @@ export interface Report {
   elements: ReportElement[];
 }
 
+export type Loc = {
+  lng: number;
+  lat: number;
+};
+
 class ReportGenerator {
   private lambda: AWS.Lambda;
   constructor(
@@ -70,26 +75,12 @@ class ReportGenerator {
     return { hours, minutes, seconds };
   };
 
-  private compareLocations = async (loc1: string, loc2: string) => {
-    const { data: report } = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc1}&key=${process.env.GOOGLE_API_KEY}`
-    );
-
-    const { data: aroflo } = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${loc2}&key=${process.env.GOOGLE_API_KEY}`
-    );
-    const resultAroflo = aroflo.results[0];
-    const resultReport = report.results[0];
-
-    return haversine(
-      resultReport.geometry.location,
-      resultAroflo.geometry.location,
-      {
-        threshold: 0.2,
-        unit: "km",
-        format: "{lat,lng}",
-      }
-    );
+  public compareLocations = async (loc1: Loc, loc2: Loc) => {
+    return haversine(loc1, loc2, {
+      threshold: 0.2,
+      unit: "km",
+      format: "{lat,lng}",
+    });
   };
 
   public generateJSONTable = async (
@@ -120,6 +111,7 @@ class ReportGenerator {
         elements: [] as ReportElement[],
       } as Report;
 
+      const matched: string[] = [];
       let jobNumber = 0;
       for (let record of actualData) {
         let el = {
@@ -145,13 +137,19 @@ class ReportGenerator {
 
         if (record.status === Status.STOPPED) {
           for (let arofloRecord of arofloData) {
-            // let jobNumber = 0;
+            const realLoc = {
+              lng: record.lng!,
+              lat: record.lat!,
+            };
+            const arofloLoc = {
+              lng: arofloRecord.lng!,
+              lat: arofloRecord.lat!,
+            };
             if (
-              await this.compareLocations(
-                record.location!,
-                arofloRecord.location!
-              )
+              (await this.compareLocations(realLoc, arofloLoc)) &&
+              !matched.includes(arofloRecord.id)
             ) {
+              matched.push(arofloRecord.id);
               jobNumber++;
               el.activity = "job";
               el.jobNumber = jobNumber;

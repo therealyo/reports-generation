@@ -4,8 +4,8 @@ import {
   pgEnum,
   pgTable,
   primaryKey,
-  serial,
   varchar,
+  real,
 } from "drizzle-orm/pg-core";
 
 export type EmailDataModel = InferModel<typeof emailDataTable, "select">;
@@ -31,8 +31,10 @@ export const emailDataTable = pgTable(
     timeSpent: varchar("time_spent"),
     status: statusEnum("status"),
     userId: varchar("user_id"),
+    lng: real("lng"),
+    lat: real("lat"),
   },
   (emailDataTable) => ({
-    cpk: primaryKey(emailDataTable.userId, emailDataTable.startDate),
+    cpk: primaryKey(emailDataTable.userName, emailDataTable.startDate),
   })
 );

@@ -2,6 +2,7 @@ import { read } from "xlsx";
 
 import { NewEmailDataModel, Status } from "../database/EmailDataTable";
 import ArofloApi from "@/externalApi/ArofloApi";
+import { getLocationGoogleApi } from "./location";
 
 interface ParsedXLSX {
   startDate: string;
@@ -51,7 +52,7 @@ export default class XLSXParser {
 
     let userData = {} as ParsedXLSX;
     const sheets = Object.values(workbook.Sheets);
-    sheets.forEach((sheet: any) => {
+    for (let sheet of sheets) {
       if (sheet.A1.v === "Object:") {
         if (parsed.length !== 0) {
           userData = {} as any;
@@ -78,6 +79,7 @@ export default class XLSXParser {
           const rowNumber = rowId.slice(1, rowId.length);
           if (rowId.includes("A") && sheet[rowId].v === Status.STOPPED) {
             const rowNumber = rowId.slice(1, rowId.length);
+            const loc = await getLocationGoogleApi(sheet[`E${rowNumber}`].v);
             userData.records.push({
               startDate: this.excelDateToJSDate(sheet[`B${rowNumber}`].v),
               endDate: this.excelDateToJSDate(sheet[`C${rowNumber}`].v),
@@ -86,6 +88,8 @@ export default class XLSXParser {
               userId: userData.userId,
               userName: userData.userName,
               status: Status.STOPPED,
+              lng: loc.lng,
+              lat: loc.lat,
             });
           } else if (rowId.includes("A") && sheet[rowId].v === Status.MOVING) {
             userData.records.push({
@@ -96,11 +100,14 @@ export default class XLSXParser {
               location: null,
               userName: userData.userName,
               status: Status.MOVING,
+              lat: null,
+              lng: null,
             });
           }
         }
       }
-    });
+    }
+
     return parsed;
   };
 }

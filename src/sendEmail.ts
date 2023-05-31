@@ -85,9 +85,7 @@ export const handler = async (event: { date: string }) => {
     };
 
     const pdfAttachment = {
-      filename: `Report for ${new Date().getUTCFullYear()}/${
-        new Date().getUTCMonth() + 1
-      }/${new Date().getUTCDate()}.pdf`,
+      filename: `Report for ${date}.pdf`,
       content: pdf,
     };
 

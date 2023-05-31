@@ -8,6 +8,34 @@
       "when": 1685013909017,
       "tag": "0000_heavy_marrow",
       "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1685516279636,
+      "tag": "0001_sudden_killmonger",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1685529717128,
+      "tag": "0002_narrow_leo",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1685530606738,
+      "tag": "0003_bright_luckman",
+      "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1685530743690,
+      "tag": "0004_heavy_ogun",
+      "breakpoints": false
     }
   ]
 }

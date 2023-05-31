@@ -2,6 +2,7 @@ import { HmacSHA512 } from "crypto-js";
 import axios, { AxiosInstance } from "axios";
 
 import { NewArofloModel } from "@/database/ArofloDataTable";
+import { getLocationGoogleApi } from "@/utils/location";
 
 class ArofloApi {
   public readonly instance: AxiosInstance;
@@ -95,6 +96,7 @@ class ArofloApi {
 
       const queryString = params.join("&");
       const auth = this.getArofloAuth("GET", queryString);
+
       if (auth) {
         const { data } = await this.instance.get(`?${queryString}`, {
           headers: {
@@ -115,10 +117,37 @@ class ArofloApi {
     return tasks;
   };
 
+  public getTasksWithIds = async (ids: string[]) => {
+    const tasks = [] as any;
+
+    const idsString = ids.join("*");
+    const params = [
+      "zone=" + encodeURIComponent("tasks"),
+      "where=" + encodeURIComponent(`and|taskid|IN|${idsString}`),
+      "join=" + encodeURIComponent("location"),
+    ];
+
+    const queryString = params.join("&");
+    const auth = this.getArofloAuth("GET", queryString);
+    if (auth) {
+      const { data } = await this.instance.get(`?${queryString}`, {
+        headers: {
+          Accept: auth.accept,
+          Authorization: auth.Authorization,
+          afdatetimeutc: auth.timestamp,
+          Authentication: `HMAC ${auth.af_hmac_signature}`,
+        },
+      });
+
+      tasks.push(...data.zoneresponse.tasks);
+    }
+
+    return tasks;
+  };
+
   public getSchedules = async (date: string) => {
     let page = 1;
     const arofloData = [] as NewArofloModel[];
-    const tasks = await this.getTasks();
     while (true) {
       const params = [
         "zone=" + encodeURIComponent("schedules"),
@@ -145,25 +174,44 @@ class ArofloApi {
         const filtered = taskSchedules.filter(
           (task: any) => task.scheduletype.type === "task"
         );
+        const taskIds = filtered.map((task: any) => task.scheduletype.typeid);
+        const tasks = await this.getTasksWithIds(taskIds);
+
         arofloData.push(
-          ...filtered
-            .map((schedule: any) => {
-              const [scheduleTask] = tasks.filter((task: any) => {
-                return task.taskid === schedule.scheduletype.typeid;
-              });
-              if (scheduleTask) {
-                return {
-                  id: schedule.scheduleid,
-                  location: scheduleTask.tasklocation.locationname,
-                  taskId: schedule.scheduletype.typeid,
-                  startDate: new Date(schedule.startdatetime).valueOf(),
-                  endDate: new Date(schedule.enddatetime).valueOf(),
-                  description: scheduleTask.description,
-                  userId: schedule.scheduledto.scheduledtoid,
-                };
-              }
-            })
-            .filter((mapped: any) => mapped)
+          ...(
+            await Promise.all(
+              filtered.map(async (schedule: any) => {
+                const [scheduleTask] = tasks.filter((task: any) => {
+                  return task.taskid === schedule.scheduletype.typeid;
+                });
+                if (scheduleTask) {
+                  let loc = {
+                    lng: scheduleTask.location.gpslong,
+                    lat: scheduleTask.location.gpslat,
+                  };
+                  if (
+                    scheduleTask.location.gpslong === "0" ||
+                    scheduleTask.location.gpslat === "0"
+                  ) {
+                    loc = await getLocationGoogleApi(
+                      `${scheduleTask.location.locationname}, ${scheduleTask.location.suburb} ${scheduleTask.location.state} ${scheduleTask.location.postcode}`
+                    );
+                  }
+                  return {
+                    id: schedule.scheduleid,
+                    location: scheduleTask.location.locationname,
+                    lng: loc.lng,
+                    lat: loc.lat,
+                    taskId: schedule.scheduletype.typeid,
+                    startDate: new Date(schedule.startdatetime).valueOf(),
+                    endDate: new Date(schedule.enddatetime).valueOf(),
+                    description: scheduleTask.description,
+                    userId: schedule.scheduledto.scheduledtoid,
+                  };
+                }
+              })
+            )
+          ).filter((mapped: any) => mapped)
         );
         page++;
       }

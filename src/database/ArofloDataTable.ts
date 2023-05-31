@@ -1,5 +1,5 @@
 import { InferModel } from "drizzle-orm";
-import { pgTable, varchar, bigint, text } from "drizzle-orm/pg-core";
+import { pgTable, varchar, bigint, text, real } from "drizzle-orm/pg-core";
 
 export type ArofloModel = InferModel<typeof arofloTable, "select">;
 export type NewArofloModel = InferModel<typeof arofloTable, "insert">;
@@ -12,4 +12,6 @@ export const arofloTable = pgTable("aroflo_data", {
   description: text("description"),
   taskId: varchar("task_id"),
   userId: varchar("user_id"),
+  lng: real("lng"),
+  lat: real("lat"),
 });
